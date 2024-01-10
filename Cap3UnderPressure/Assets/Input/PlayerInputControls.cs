@@ -59,7 +59,7 @@ public partial class @PlayerInputControls: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""c585679a-fef5-4a21-9608-d0ca08d58b8f"",
-                    ""path"": ""<Keyboard>/k"",
+                    ""path"": ""<Keyboard>/shift"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard & Mouse"",
@@ -125,7 +125,7 @@ public partial class @PlayerInputControls: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""e2881cdf-9f6a-4829-99fd-18cad4f1f5ec"",
-                    ""path"": ""<Keyboard>/j"",
+                    ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard & Mouse"",

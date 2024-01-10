@@ -4,61 +4,72 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement")]
-    public float moveSpeed;
-    public float moveAcceleration;
+    public float walkSpeed;
+    public float walkAccel;
+    public float runSpeed;
+    public float runAccel;
+    public float decel;
 
-    // Components
-    [HideInInspector] public Rigidbody2D rigidBody;
-    [HideInInspector] public Collider2D collision;
+    [Header("Ramp/Step Parameters")]
+    public LayerMask raycastMask;
+    public float originDistance;
+    public float stepDistance;
 
-    // Controls
-    [HideInInspector] public PlayerInputControls controls;
-    [HideInInspector] public InputAction moveAction;
-    [HideInInspector] public InputAction interactAction;
-    [HideInInspector] public InputAction dashAction;
+    private PlayerController controller;
+    private float currentSpeed = 0;
+    private Vector3 moveDirection = Vector3.zero;
 
-    private void Awake()
+    private void Start()
     {
-        rigidBody = GetComponent<Rigidbody2D>();
-        collision = GetComponent<Collider2D>();
-        controls = new PlayerInputControls();
+        controller = GetComponent<PlayerController>();
     }
 
     private void FixedUpdate()
     {
-        if(moveAction.ReadValue<Vector2>() != Vector2.zero)
-        rigidBody.velocity = moveAction.ReadValue<Vector2>() * moveSpeed;
+        DoMovementBase();
+        DoGroundSnapping();
     }
 
-    private void OnEnable()
+    private void DoMovementBase()
     {
-        SetControls();
-        EnableControls();
+        Vector2 dir = controller.moveAction.ReadValue<Vector2>();                     // Read directional input
+        bool dashPressed = controller.dashAction.phase == InputActionPhase.Performed; // Check dash button
+        float maxSpeed = dashPressed ? runSpeed : walkSpeed;                          // Update speeds
+        float currentAccel = dashPressed ? runAccel : walkAccel;
+
+        if (dir != Vector2.zero)
+        {
+            // Accelerate to speed and store direction
+            moveDirection = (transform.right * dir.x) + (transform.forward * dir.y);
+            currentSpeed = Mathf.Min(currentSpeed + currentAccel, maxSpeed);
+        }
+        else
+        {
+            // Decelerate
+            currentSpeed = Mathf.Max(currentSpeed - decel, 0);
+        }
+
+        // Apply velocity
+        Vector3 currentVelocity = moveDirection * currentSpeed;
+        currentVelocity.y = controller.rigidBody.velocity.y;
+        controller.rigidBody.velocity = currentVelocity;
     }
 
-    private void OnDisable()
+    private void DoGroundSnapping()
     {
-        DisableControls();
-    }
+        RaycastHit hit;
+        Vector3 currentPos = transform.position;
 
-    private void EnableControls()
-    {
-        moveAction.Enable();
-        dashAction.Enable();
-        interactAction.Enable();
-    }
-
-    private void DisableControls()
-    {
-        moveAction.Disable();
-        dashAction.Disable();
-        interactAction.Disable();
-    }
-
-    private void SetControls()
-    {
-        moveAction = controls.Player.Move;
-        dashAction = controls.Player.Dash;
-        interactAction = controls.Player.Interact;
+        if(Physics.Raycast(transform.position, -transform.up, out hit, originDistance + stepDistance, raycastMask))
+        {
+            currentPos.y = hit.point.y + originDistance;
+            transform.position = currentPos;
+            controller.rigidBody.velocity = new Vector3(controller.rigidBody.velocity.x, 0f, controller.rigidBody.velocity.z);
+            controller.grounded = true;
+        }
+        else
+        {
+            controller.grounded = false;
+        }
     }
 }
