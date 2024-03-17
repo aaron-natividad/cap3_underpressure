@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be261fdf0947df84fb5189065c7dddea, type: 3}
+  m_Name: Frustration
+  m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: f78fff7ea28d43a40b33a43ce469394d, type: 3}
+  id: Frustration
+  description: You become irritated, making you clumsier when handling  machines.
+  effect: 10% chance for machines to break on interaction.
+  useCounter: 1
+  counterValue: 0
+  disableTime: 1
+  disableRate: 5

@@ -59,7 +59,7 @@ public class Outline : MonoBehaviour {
   [SerializeField]
   private Color outlineColor = Color.white;
 
-  [SerializeField, Range(0f, 10f)]
+  [SerializeField, Range(0f, 20f)]
   private float outlineWidth = 2f;
 
   [Header("Optional")]
@@ -78,9 +78,31 @@ public class Outline : MonoBehaviour {
   private Material outlineMaskMaterial;
   private Material outlineFillMaterial;
 
-  private bool needsUpdate;
+    [HideInInspector] public bool needsUpdate;
 
-  void Awake() {
+    public void Reinitialize()
+    {
+        if (outlineMaskMaterial != null) Destroy(outlineMaskMaterial);
+        if (outlineFillMaterial != null) Destroy(outlineFillMaterial);
+
+        // Cache renderers
+        renderers = GetComponentsInChildren<Renderer>();
+
+        // Instantiate outline materials
+        outlineMaskMaterial = Instantiate(Resources.Load<Material>(@"Materials/OutlineMask"));
+        outlineFillMaterial = Instantiate(Resources.Load<Material>(@"Materials/OutlineFill"));
+
+        outlineMaskMaterial.name = "OutlineMask (Instance)";
+        outlineFillMaterial.name = "OutlineFill (Instance)";
+
+        // Retrieve or generate smooth normals
+        LoadSmoothNormals();
+
+        // Apply material properties immediately
+        needsUpdate = true;
+    }
+
+    void Awake() {
 
     // Cache renderers
     renderers = GetComponentsInChildren<Renderer>();
@@ -169,6 +191,8 @@ public class Outline : MonoBehaviour {
         continue;
       }
 
+      if (meshFilter.gameObject.layer == LayerMask.NameToLayer("IgnoreOutline")) continue;
+
       // Serialize smooth normals
       var smoothNormals = SmoothNormals(meshFilter.sharedMesh);
 
@@ -182,8 +206,10 @@ public class Outline : MonoBehaviour {
     // Retrieve or generate smooth normals
     foreach (var meshFilter in GetComponentsInChildren<MeshFilter>()) {
 
-      // Skip if smooth normals have already been adopted
-      if (!registeredMeshes.Add(meshFilter.sharedMesh)) {
+            if (meshFilter.gameObject.layer == LayerMask.NameToLayer("IgnoreOutline")) continue;
+
+            // Skip if smooth normals have already been adopted
+            if (!registeredMeshes.Add(meshFilter.sharedMesh)) {
         continue;
       }
 

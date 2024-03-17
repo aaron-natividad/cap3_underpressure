@@ -1,18 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+public enum HandCount { OneHanded, TwoHanded };
 
-public class Enums : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+public enum SwitchDirection { Up, Down };
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-}
+public enum RobotColor { White, Red, Green, Blue };
+
+public enum RobotPartType { Shell, Battery, Wheels };
+
+public enum PlayerState { Normal, Disabled, Dialogue };
+
+public enum MachineState { Normal, Disabled, Performing };
+
+public enum DialogueRequirementType { None, Item, Machine, Intro};

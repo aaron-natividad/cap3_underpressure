@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f3e1b7dc6f17bd4dbc8abebb8955508, type: 3}
+  m_Name: Demotivation
+  m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: 59734735bc668b64f9a84972fda1e513, type: 3}
+  id: Demotivation
+  description: Ur demotivated so things feel slower.
+  effect: Machines take 50% longer to do their task.
+  ui: {fileID: 0}
+  handler: {fileID: 0}
+  animSpeed: 1.5
