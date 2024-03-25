@@ -7,13 +7,16 @@ using UnityEngine.UI;
 public class DialogueUI : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI speakerName;
+    [SerializeField] private Image speakerBox;
     [SerializeField] private TextMeshProUGUI dialogue;
     [SerializeField] private float dialogueDelay;
+    [SerializeField] private float dialogueSoundDelay;
 
     [HideInInspector] public bool inAnimation;
 
     private CanvasGroup mainGroup;
     private AudioSource audioSource;
+    private AudioClip storedClip;
     private bool isEnabled;
 
     private void OnEnable()
@@ -30,6 +33,7 @@ public class DialogueUI : MonoBehaviour
     {
         mainGroup = GetComponent<CanvasGroup>();
         audioSource = GetComponent<AudioSource>();
+        StartCoroutine(PlayDialogueSound());
     }
 
     public void SetEnabled(bool isEnabled)
@@ -46,11 +50,26 @@ public class DialogueUI : MonoBehaviour
     public void UpdateText(string name, string text, AudioClip clip = null)
     {
         speakerName.text = name;
-        StartCoroutine(GenAnim.PlayText(dialogue, text, dialogueDelay, audioSource, clip));
+        speakerBox.enabled = !(speakerName.text == "" || speakerName.text == null);
+        storedClip = clip;
+        StartCoroutine(GenAnim.PlayTextByLetter(dialogue, text, dialogueDelay));
     }
 
     private void ChangeAnimationState(bool animState)
     {
         inAnimation = animState;
+    }
+
+    private IEnumerator PlayDialogueSound()
+    {
+        while (true)
+        {
+            if (inAnimation && storedClip != null)
+            {
+                audioSource.pitch = Random.Range(0.8f, 1.2f);
+                audioSource.PlayOneShot(storedClip);
+            }
+            yield return new WaitForSeconds(dialogueSoundDelay);
+        }
     }
 }

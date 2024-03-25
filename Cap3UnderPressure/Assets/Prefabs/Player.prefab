@@ -426,9 +426,9 @@ MonoBehaviour:
   footstep: {fileID: 8300000, guid: 417a5568865bd064aa4933331c96ae75, type: 3}
   footstepWalkDelay: 0.4
   footstepRunDelay: 0.2
-  walkSpeed: 5
+  walkSpeed: 7
   walkAccel: 1
-  runSpeed: 10
+  runSpeed: 9
   runAccel: 2
   decel: 0.5
   raycastMask:

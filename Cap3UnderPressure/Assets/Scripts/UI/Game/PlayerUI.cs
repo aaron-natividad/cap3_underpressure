@@ -22,7 +22,10 @@ public class PlayerUI : MonoBehaviour
             Destroy(this);
         else
             instance = this;
+    }
 
+    private void Start()
+    {
         gameUI.SetEnabled(false);
         dialogueUI.SetEnabled(false);
         pauseUI.SetEnabled(false);
@@ -39,6 +42,7 @@ public class PlayerUI : MonoBehaviour
         gameUI.SetEnabled(isPaused ? false : gameUIState);
         dialogueUI.SetEnabled(isPaused ? false : dialogueUIState);
         pauseUI.SetEnabled(isPaused);
+        pauseUI.PlayClickSound();
         crosshair.SetActive(!isPaused);
 
         Cursor.lockState = isPaused ? CursorLockMode.Confined : CursorLockMode.Locked;

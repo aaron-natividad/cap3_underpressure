@@ -1,22 +1,30 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class PauseUI : MonoBehaviour
 {
+    [SerializeField] private Volume blurVolume;
+
+    [SerializeField] private AudioClip clickSound;
     [SerializeField] private CanvasGroup[] pauseGroups;
 
+    private AudioSource audioSource;
     private CanvasGroup mainGroup;
     private bool isEnabled;
 
     private void Awake()
     {
+        audioSource = GetComponent<AudioSource>();
         mainGroup = GetComponent<CanvasGroup>();
     }
 
     public void SetEnabled(bool isEnabled)
     {
+        blurVolume.enabled = isEnabled;
         mainGroup.alpha = isEnabled ? 1 : 0;
         mainGroup.interactable = isEnabled;
         mainGroup.blocksRaycasts = isEnabled;
@@ -34,8 +42,14 @@ public class PauseUI : MonoBehaviour
         return isEnabled;
     }
 
+    public void PlayClickSound()
+    {
+        audioSource.PlayOneShot(clickSound);
+    }
+
     public void FadeCanvasGroup(int index)
     {
+        audioSource.PlayOneShot(clickSound);
         SetCanvasGroup(index);
         StartCoroutine(GenAnim.Fade(pauseGroups[index], 1, 0.25f));
     }
@@ -49,9 +63,14 @@ public class PauseUI : MonoBehaviour
     //CHANGE
     public void LoadTitleScreen()
     {
+        GameObject dataManager = DataManager.instance.gameObject;
+
         Manager.instance.TogglePause();
         Player.instance.state = PlayerState.Disabled;
+        Time.timeScale = 0;
         Manager.instance.GetComponent<SceneHandler>().LoadScene("Title");
+        DataManager.instance = null;
+        Destroy(dataManager);
     }
 
     private void DisableCanvasGroups()

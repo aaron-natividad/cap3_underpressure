@@ -7,11 +7,7 @@ using Random = UnityEngine.Random;
 public class PlayerCamera : MonoBehaviour
 {
     [Header("Game Objects")]
-    public Transform cam;
-
-    [Header("Camera Movement")]
-    [SerializeField] private float sensX;
-    [SerializeField] private float sensY;
+    public Transform cam; 
 
     [Header("Camera Bob")]
     [SerializeField] private float bobWalkSpeed;
@@ -28,14 +24,27 @@ public class PlayerCamera : MonoBehaviour
     private PlayerController controller;
     private Vector3 defaultCameraPos;
 
+    private float sensX;
+    private float sensY;
     private float rotationY;
     private float rotationX;
     private float bobTime = 0;
+
+    private void OnEnable()
+    {
+        SensitivitySlider.OnSensitivityChanged += GetSensitivity;
+    }
+
+    private void OnDisable()
+    {
+        SensitivitySlider.OnSensitivityChanged -= GetSensitivity;
+    }
 
     private void Start()
     {
         player = Player.instance;
         controller = Player.instance.controller;
+        GetSensitivity();
 
         Cursor.lockState = CursorLockMode.Locked;
         defaultCameraPos = cam.localPosition;
@@ -46,6 +55,12 @@ public class PlayerCamera : MonoBehaviour
     {
         if (player.state != PlayerState.Normal) return;
         MoveCamera();
+    }
+
+    private void GetSensitivity()
+    {
+        sensX = PlayerPrefs.HasKey("SensX") ? PlayerPrefs.GetFloat("SensX") : 2f;
+        sensY = PlayerPrefs.HasKey("SensY") ? PlayerPrefs.GetFloat("SensY") : 2f;
     }
 
     private void DoHeadBob()

@@ -9,7 +9,7 @@ public class DialogueHandler : MonoBehaviour
     public static Action<int> OnDialogueGroupEnd;
     public static Action OnDialogueEnd;
 
-    [SerializeField] private DialogueGroup[] dialogueGroups;
+    public DialogueGroup[] dialogueGroups;
 
     private Player player;
     private DialogueUI ui;

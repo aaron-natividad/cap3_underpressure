@@ -9,23 +9,20 @@ EditorBuildSettings:
     path: Assets/Scenes/Title.unity
     guid: d1472655e0489fb498c2558e5b1bf525
   - enabled: 1
-    path: Assets/Scenes/Intros/GameIntro.unity
-    guid: 6f0d8e97124b32043ab281c281345ea8
-  - enabled: 1
-    path: Assets/Scenes/Tutorials/MovementTutorial.unity
-    guid: ba288e7cbec2e40479813118ea37796f
-  - enabled: 1
     path: Assets/Scenes/Tutorials/Tutorial 1.unity
     guid: f5ed1f2eb3c3bf74ba4155c1c3856515
   - enabled: 1
     path: Assets/Scenes/Tutorials/Tutorial 2.unity
-    guid: f8a93345711536d45b1dbc656de53f3c
+    guid: 51fc58e0744498a4984890e12ede4014
   - enabled: 1
     path: Assets/Scenes/Tutorials/Tutorial 3.unity
-    guid: 867256bcac8d11c49a84ca3655a42376
+    guid: 51ff5447599e55649bbaf8b77024609d
   - enabled: 1
     path: Assets/Scenes/Tutorials/Tutorial 4.unity
-    guid: 503ba560ec36c4941ba6dd857adbfb14
+    guid: 5512dda7cfc829242a45c3eddaf116c1
+  - enabled: 1
+    path: Assets/Scenes/Tutorials/Tutorial 5.unity
+    guid: 26054ef566c1ba34cbc1ec9b5bb74f36
   - enabled: 1
     path: Assets/Scenes/Levels/Level 1.unity
     guid: dd62c7df1a4499a48b69ec3991920adb
@@ -37,17 +34,29 @@ EditorBuildSettings:
     guid: 021cc625c11bc7d48ae99b7e4fd0bc95
   - enabled: 1
     path: Assets/Scenes/Levels/Level 4.unity
-    guid: eb4e34632b525ff4a8c05ebc48f3fcf6
+    guid: 792aaa9ff695e004fb62f73e091af7c6
   - enabled: 1
     path: Assets/Scenes/Levels/Level 5.unity
-    guid: bb8bc89d20f2ba342af67471950593c7
+    guid: eb4e34632b525ff4a8c05ebc48f3fcf6
   - enabled: 1
     path: Assets/Scenes/Evaluation.unity
     guid: f0be527077afe3241ab8f80ad779b28a
   - enabled: 1
+    path: Assets/Scenes/Symptom Screen.unity
+    guid: b39eb99fb7d580143b4550fbc372f336
+  - enabled: 1
+    path: Assets/Scenes/Intros/GameIntro.unity
+    guid: 6f0d8e97124b32043ab281c281345ea8
+  - enabled: 1
     path: Assets/Scenes/Intros/BurnoutIntro.unity
     guid: 290b3fe2c2af53b41b301b1cf5749390
   - enabled: 1
-    path: Assets/Scenes/Symptom Screen.unity
-    guid: b39eb99fb7d580143b4550fbc372f336
+    path: Assets/Scenes/Tutorials/MovementTutorial.unity
+    guid: ba288e7cbec2e40479813118ea37796f
+  - enabled: 1
+    path: Assets/Scenes/Endings/GoodEnding.unity
+    guid: 8ff0c3331e1fbaf40b30f6c4e9662fc0
+  - enabled: 1
+    path: Assets/Scenes/Endings/BadEnding.unity
+    guid: 6aa307e6066bbf44ba921c64d4ab8cf4
   m_configObjects: {}

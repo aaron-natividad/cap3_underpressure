@@ -8,6 +8,10 @@ public class TitleScreen : MonoBehaviour
     [SerializeField] private SceneHandler sceneHandler;
     [SerializeField] private ParticleSystem desertDust;
 
+    [Header("Audio")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip clickSound;
+
     [Header("Parameters")]
     [SerializeField] private float distance;
     [SerializeField] private float duration;
@@ -30,11 +34,18 @@ public class TitleScreen : MonoBehaviour
 
     private void Start()
     {
-        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.lockState = CursorLockMode.None;
+    }
+
+    public void PlayClickSound()
+    {
+        audioSource.pitch = Random.Range(0.9f, 1.1f);
+        audioSource.PlayOneShot(clickSound);
     }
 
     public void MoveToMainMenu()
     {
+        PlayClickSound();
         StopAllCoroutines();
         StartCoroutine(CO_MainMenu());
     }

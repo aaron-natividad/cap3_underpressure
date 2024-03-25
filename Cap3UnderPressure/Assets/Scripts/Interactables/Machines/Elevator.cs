@@ -1,10 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics.Tracing;
 using UnityEngine;
 
 public class Elevator : Machine
 {
+    public static Action OnElevatorLift;
+
+    [SerializeField] private AudioClip doorSound;
+    [SerializeField] private AudioClip liftSound;
+    [Space(10)]
     [SerializeField] private GameObject elevatorParent;
     [SerializeField] private Transform door;
     [SerializeField] private SceneHandler sceneHandler;
@@ -23,13 +28,15 @@ public class Elevator : Machine
     public override IEnumerator PerformAction()
     {
         state = MachineState.Performing;
+        audioSource.PlayOneShot(doorSound);
         LeanTween.moveLocal(door.gameObject, door.localPosition + Vector3.down * doorDistance, doorDuration).setEase(LeanTweenType.easeInCubic);
         yield return new WaitForSeconds(doorDuration + 1f);
 
+        audioSource.PlayOneShot(liftSound);
         LeanTween.move(elevatorParent, elevatorParent.transform.position + Vector3.up * liftDistance, liftDuration);
         yield return new WaitForSeconds(2f);
 
-        sceneHandler.LoadNextScene();
+        OnElevatorLift?.Invoke();
         state = MachineState.Normal;
     }
 }

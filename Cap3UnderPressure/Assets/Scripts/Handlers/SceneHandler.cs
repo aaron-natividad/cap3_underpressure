@@ -40,6 +40,7 @@ public class SceneHandler : MonoBehaviour
 
     private IEnumerator CO_StartScene()
     {
+        Time.timeScale = 1f;
         yield return new WaitForSeconds(0.5f);
         StartCoroutine(cover.UncoverScreen(0.5f, 0.5f));
         yield return new WaitForSeconds(1f);
@@ -51,7 +52,7 @@ public class SceneHandler : MonoBehaviour
         OnSceneLoading?.Invoke();
         Player.instance?.ChangeState(PlayerState.Disabled);
         StartCoroutine(cover.CoverScreen(0.5f, 0.5f));
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSecondsRealtime(1f);
         SceneManager.LoadScene(sceneName);
     }
 }

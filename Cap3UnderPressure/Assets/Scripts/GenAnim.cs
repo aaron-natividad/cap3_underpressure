@@ -9,6 +9,7 @@ using Random = UnityEngine.Random;
 public static class GenAnim
 {
     public static Action<bool> OnAnimationStateChanged;
+    public static Action OnTextSoundPlayed;
 
     public static IEnumerator Fade(CanvasGroup group, float toAlpha, float fadeTime)
     {
@@ -67,7 +68,7 @@ public static class GenAnim
         textObject.color = currentColor;
     }
 
-    public static IEnumerator PlayText(TextMeshProUGUI tmp, string text, float delay, AudioSource audioSource = null, AudioClip audioClip = null)
+    public static IEnumerator PlayTextByLetter(TextMeshProUGUI tmp, string text, float delay)
     {
         OnAnimationStateChanged?.Invoke(true);
         bool inCommand = false;
@@ -90,15 +91,35 @@ public static class GenAnim
             if (inCommand) continue;
 
             tmp.text = currentText;
-
-            if (audioClip != null)
-            {
-                audioSource.pitch = Random.Range(0.6f, 1.2f);
-                audioSource?.PlayOneShot(audioClip);
-            }
-            
+            OnTextSoundPlayed?.Invoke();
             yield return new WaitForSeconds(delay);
         }
+        OnAnimationStateChanged?.Invoke(false);
+    }
+
+    public static IEnumerator PlayTextByWord(TextMeshProUGUI tmp, string text, float delay)
+    {
+        OnAnimationStateChanged?.Invoke(true);
+        bool inWord = false;
+        string currentText = "";
+
+        for (int i = 0; i < text.Length; i++)
+        {
+            currentText += text[i];
+
+            if (text[i] == ' ')
+            {
+                inWord = !inWord;
+                continue;
+            }
+            if (inWord) continue;
+
+            tmp.text = currentText;
+            OnTextSoundPlayed?.Invoke();
+            yield return new WaitForSeconds(delay);
+        }
+
+        tmp.text = text;
         OnAnimationStateChanged?.Invoke(false);
     }
 }

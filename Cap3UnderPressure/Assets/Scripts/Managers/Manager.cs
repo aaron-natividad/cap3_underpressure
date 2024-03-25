@@ -16,12 +16,12 @@ public class Manager : MonoBehaviour
 
     private void OnEnable()
     {
-        Timer.OnTimerFinish += EndGame;
+        AddListeners();
     }
 
     private void OnDisable()
     {
-        Timer.OnTimerFinish -= EndGame;
+        RemoveListeners();
     }
 
     private void Awake()
@@ -54,6 +54,18 @@ public class Manager : MonoBehaviour
 
     }
 
+    protected virtual void AddListeners()
+    {
+        Timer.OnTimerFinish += EndGame;
+        Elevator.OnElevatorLift += EndGame;
+    }
+
+    protected virtual void RemoveListeners()
+    {
+        Timer.OnTimerFinish -= EndGame;
+        Elevator.OnElevatorLift -= EndGame;
+    }
+
     protected virtual void StartGame()
     {
         DialogueHandler.OnIntroFinish -= StartGame;
@@ -74,15 +86,18 @@ public class Manager : MonoBehaviour
         isPaused = !isPaused;
         Time.timeScale = isPaused ? 0 : 1;
         PlayerUI.instance.TogglePause(isPaused);
+        
 
         if (isPaused)
         {
             storedPlayerState = Player.instance.state;
             Player.instance.state = PlayerState.Disabled;
+            AudioManager.instance.Pause();
         }
         else
         {
             Player.instance.state = storedPlayerState;
+            AudioManager.instance.Play();
         }
     }
 }

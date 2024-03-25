@@ -74,20 +74,20 @@ MonoBehaviour:
     m_Scale: 1
     m_UnitsPerEM: 1024
     m_LineHeight: 32
-    m_AscentLine: 16
+    m_AscentLine: 22
     m_CapLine: 16
     m_MeanLine: 8
     m_Baseline: 0
-    m_DescentLine: -16
-    m_SuperscriptOffset: 16
+    m_DescentLine: -10
+    m_SuperscriptOffset: 22
     m_SuperscriptSize: 0.5
-    m_SubscriptOffset: -16
+    m_SubscriptOffset: -10
     m_SubscriptSize: 0.5
     m_UnderlineOffset: 2.40625
     m_UnderlineThickness: 1.59375
     m_StrikethroughOffset: 3.2
     m_StrikethroughThickness: 1.59375
-    m_TabWidth: 6
+    m_TabWidth: 2
   m_GlyphTable:
   - m_Index: 1
     m_Metrics:
@@ -99,6 +99,21 @@ MonoBehaviour:
     m_GlyphRect:
       m_X: 378
       m_Y: 102
+      m_Width: 1
+      m_Height: 1
+    m_Scale: 1
+    m_AtlasIndex: 0
+    m_ClassDefinitionType: 0
+  - m_Index: 2
+    m_Metrics:
+      m_Width: 0
+      m_Height: 0
+      m_HorizontalBearingX: 0
+      m_HorizontalBearingY: 0
+      m_HorizontalAdvance: 2
+    m_GlyphRect:
+      m_X: 402
+      m_Y: 80
       m_Width: 1
       m_Height: 1
     m_Scale: 1
@@ -1445,6 +1460,10 @@ MonoBehaviour:
     m_GlyphIndex: 1
     m_Scale: 1
   - m_ElementType: 1
+    m_Unicode: 32
+    m_GlyphIndex: 2
+    m_Scale: 1
+  - m_ElementType: 1
     m_Unicode: 33
     m_GlyphIndex: 3
     m_Scale: 1
@@ -2166,6 +2185,10 @@ MonoBehaviour:
     m_Y: 92
     m_Width: 21
     m_Height: 21
+  - m_X: 392
+    m_Y: 70
+    m_Width: 21
+    m_Height: 21
   m_FreeGlyphRects:
   - m_X: 34
     m_Y: 156
@@ -2187,14 +2210,6 @@ MonoBehaviour:
     m_Y: 114
     m_Width: 724
     m_Height: 910
-  - m_X: 404
-    m_Y: 38
-    m_Width: 620
-    m_Height: 986
-  - m_X: 406
-    m_Y: 34
-    m_Width: 618
-    m_Height: 990
   - m_X: 26
     m_Y: 528
     m_Width: 998
@@ -2243,10 +2258,6 @@ MonoBehaviour:
     m_Y: 1012
     m_Width: 1024
     m_Height: 12
-  - m_X: 392
-    m_Y: 70
-    m_Width: 632
-    m_Height: 954
   - m_X: 304
     m_Y: 113
     m_Width: 720
@@ -2263,6 +2274,22 @@ MonoBehaviour:
     m_Y: 76
     m_Width: 2
     m_Height: 16
+  - m_X: 404
+    m_Y: 38
+    m_Width: 620
+    m_Height: 32
+  - m_X: 406
+    m_Y: 34
+    m_Width: 618
+    m_Height: 36
+  - m_X: 413
+    m_Y: 34
+    m_Width: 611
+    m_Height: 990
+  - m_X: 392
+    m_Y: 91
+    m_Width: 632
+    m_Height: 933
   m_fontInfo:
     Name: 
     PointSize: 0
@@ -2323,8 +2350,8 @@ MonoBehaviour:
 
       /\|_^+-=#%
 
-      ()[]{}<>*'
-    referencedFontAssetGUID: 
+      ()[]{}<>* '
+    referencedFontAssetGUID: 2ed94f5443b44634ea659d1d7d9a5c59
     referencedTextAssetGUID: 
     fontStyle: 0
     fontStyleModifier: 0

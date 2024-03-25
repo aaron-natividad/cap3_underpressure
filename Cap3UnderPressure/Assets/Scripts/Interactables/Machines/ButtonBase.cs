@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ButtonBase : Machine
 {
+    [SerializeField] private AudioClip buttonSound;
+
     [Header("Game Objects")]
     [SerializeField] protected GameObject buttonObject;
     [SerializeField] protected Machine machine;
@@ -31,6 +33,7 @@ public class ButtonBase : Machine
 
     protected IEnumerator DoButtonAction()
     {
+        audioSource.PlayOneShot(buttonSound);
         if (buttonObject != null) LeanTween.moveLocal(buttonObject, buttonLocation, 0.05f);
         yield return new WaitForSeconds(0.1f);
         machine.StartCoroutine(machine.PerformAction());

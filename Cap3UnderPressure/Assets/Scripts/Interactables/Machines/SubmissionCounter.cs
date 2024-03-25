@@ -7,7 +7,13 @@ public class SubmissionCounter : Machine
 {
     public static Action<bool> OnRobotEvaluated;
 
+    [SerializeField] private AudioClip conveyorSFX;
+    [Space(10)]
+    [SerializeField] private AudioClip correctSFX;
+    [SerializeField] private AudioClip wrongSFX;
+
     [Header("Machine Components")]
+    [SerializeField] private SubmissionLight subLight;
     [SerializeField] private Transform cylinderParent;
     [SerializeField] private Transform attachPoint;
     [SerializeField] private Transform destroyPoint;
@@ -49,14 +55,33 @@ public class SubmissionCounter : Machine
     public override IEnumerator PerformAction()
     {
         state = MachineState.Performing;
+        audioSource.clip = conveyorSFX;
+        audioSource.Play();
         LeanTween.move(heldItem.gameObject, destroyPoint.transform.position, 2f);
         yield return new WaitForSeconds(2f);
 
+        audioSource.clip = null;
+        audioSource.Stop();
+
         Robot robot = heldItem.GetComponent<Robot>();
-        if (robot != null) OnRobotEvaluated?.Invoke(robot.IsCorrect(requiredColor));
+        if (robot != null)
+        {
+            PlayEffect(robot.IsCorrect(requiredColor));
+            OnRobotEvaluated?.Invoke(robot.IsCorrect(requiredColor));
+        }
+        else
+        {
+            PlayEffect(false);
+        }
 
         ClearItem();
         state = MachineState.Normal;
+    }
+
+    private void PlayEffect(bool isCorrect)
+    {
+        audioSource.PlayOneShot(isCorrect ? correctSFX : wrongSFX);
+        subLight.DisplayColor(isCorrect, 0.5f);
     }
 
     private void ReceiveColorRequirement(RobotColor color)

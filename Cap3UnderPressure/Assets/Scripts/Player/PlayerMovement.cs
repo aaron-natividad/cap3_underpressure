@@ -58,7 +58,7 @@ public class PlayerMovement : MonoBehaviour
             // Accelerate to speed and store direction
             moveDirection = (transform.right * dir.x) + (transform.forward * dir.y);
             currentSpeed = Mathf.Min(currentSpeed + currentAccel, maxSpeed);
-            DoFootsteps(dashPressed);
+            if (player.grounded) DoFootsteps(dashPressed);
         }
         else
         {

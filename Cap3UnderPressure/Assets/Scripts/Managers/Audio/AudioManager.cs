@@ -8,8 +8,18 @@ public class AudioManager : MonoBehaviour
     public static AudioManager instance;
 
     public AudioMixer mainMixer;
-    public AudioSource sourceBGM;
+
+    [Header("BGM")]
+    public AudioSource sourceBGM_Base;
+    public AudioSource sourceBGM_Ambient;
+    public AudioSource sourceBGM_TrackOne;
+    public AudioSource sourceBGM_TrackTwo;
+
+    [Header("Ambient")]
     public AudioSource sourceAmbient;
+
+    private bool isTrackOne;
+    public AudioSource queuedTrack;
 
     private void OnEnable()
     {
@@ -32,6 +42,10 @@ public class AudioManager : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(gameObject);
         }
+
+        isTrackOne = true;
+        queuedTrack = sourceBGM_TrackTwo;
+        sourceBGM_TrackTwo.mute = true;
     }
 
     private void Start()
@@ -55,14 +69,63 @@ public class AudioManager : MonoBehaviour
 
     public void FadeIn()
     {
-        sourceBGM.Play();
-        sourceAmbient.Play();
-        StartCoroutine(FadeAudio(0, 1, 0.5f));
+        StartCoroutine(FadeAudio(0, 1, 1f));
+        Play();
     }
 
     public void FadeOut()
     {
-        StartCoroutine(FadeAudio(1, 0, 0.5f));
+        StartCoroutine(FadeAudio(1, 0, 1f));
+    }
+
+    public void Play()
+    {
+        sourceBGM_Ambient.Play();
+        sourceBGM_Base.Play();
+        sourceBGM_TrackOne.Play();
+        sourceBGM_TrackTwo.Play();
+        sourceAmbient.Play();
+    }
+
+    public void Pause()
+    {
+        sourceBGM_Ambient.Pause();
+        sourceBGM_Base.Pause();
+        sourceBGM_TrackOne.Pause();
+        sourceBGM_TrackTwo.Pause();
+        sourceAmbient.Pause();
+    }
+
+    public void Stop()
+    {
+        sourceBGM_Ambient.Stop();
+        sourceBGM_Base.Stop();
+        sourceBGM_TrackOne.Stop();
+        sourceBGM_TrackTwo.Stop();
+        sourceAmbient.Stop();
+    }
+
+    public void SwitchTrack()
+    {
+        isTrackOne = !isTrackOne;
+        queuedTrack = isTrackOne ? sourceBGM_TrackTwo : sourceBGM_TrackOne;
+        sourceBGM_TrackOne.mute = !isTrackOne;
+        sourceBGM_TrackTwo.mute = isTrackOne;
+    }
+
+    public void ClearTracks()
+    {
+        sourceBGM_TrackOne.clip = null;
+        sourceBGM_TrackTwo.clip = null;
+    }
+
+    private void ChangeAllVolumes(float volume)
+    {
+        sourceBGM_Ambient.volume = volume;
+        sourceBGM_Base.volume = volume;
+        sourceBGM_TrackOne.volume = volume;
+        sourceBGM_TrackTwo.volume = volume;
+        sourceAmbient.volume = volume;
     }
 
     private IEnumerator FadeAudio(float startVolume, float endVolume, float duration)
@@ -74,18 +137,15 @@ public class AudioManager : MonoBehaviour
         {
             t += Time.deltaTime;
             currentVolume = Mathf.Lerp(startVolume, endVolume, t / duration);
-            sourceBGM.volume = currentVolume;
-            sourceAmbient.volume = currentVolume;
+            ChangeAllVolumes(currentVolume);
             yield return null;
         }
 
-        sourceBGM.volume = endVolume;
-        sourceAmbient.volume = endVolume;
-
+        ChangeAllVolumes(endVolume);
         if (endVolume <= 0)
         {
-            sourceBGM.Stop();
-            sourceAmbient.Stop();
+            Stop();
+            ClearTracks();
         }
     }
 }

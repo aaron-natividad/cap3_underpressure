@@ -376,12 +376,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: painter_switch_g
+  heldItem: {fileID: 0}
   explosion: {fileID: 5544339517789404948}
   sparks: {fileID: 4988227543161012681}
   audioSource: {fileID: 6848077255719517244}
   disabledSound: {fileID: 8300000, guid: fce16df7d5ab91d4093c613227394f0b, type: 3}
-  heldItem: {fileID: 0}
   state: 0
+  buttonSound: {fileID: 8300000, guid: 57f15b9950d3a2e4b8b1815c0a130d44, type: 3}
   buttonObject: {fileID: 3395561217119226275}
   machine: {fileID: 7070454179017011550}
   buttonLocation: {x: 0, y: 0.06, z: 0.05}
@@ -5386,12 +5387,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: painter_switch_r
+  heldItem: {fileID: 0}
   explosion: {fileID: 5544339517789404948}
   sparks: {fileID: 4988227543161012681}
   audioSource: {fileID: 6848077255719517244}
   disabledSound: {fileID: 8300000, guid: fce16df7d5ab91d4093c613227394f0b, type: 3}
-  heldItem: {fileID: 0}
   state: 0
+  buttonSound: {fileID: 8300000, guid: 57f15b9950d3a2e4b8b1815c0a130d44, type: 3}
   buttonObject: {fileID: 3996494370415707750}
   machine: {fileID: 7070454179017011550}
   buttonLocation: {x: 0, y: 0.19, z: 0.05}
@@ -6876,11 +6878,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: painter
+  heldItem: {fileID: 0}
   explosion: {fileID: 5544339517789404948}
   sparks: {fileID: 4988227543161012681}
   audioSource: {fileID: 6848077255719517244}
   disabledSound: {fileID: 8300000, guid: fce16df7d5ab91d4093c613227394f0b, type: 3}
-  heldItem: {fileID: 0}
   state: 0
   robotArmSound: {fileID: 8300000, guid: 26195b49a8068ed478bb12c5f04aa22a, type: 3}
   spraySound: {fileID: 8300000, guid: d8dd443b2d4c6e348adb668393025420, type: 3}
@@ -7153,12 +7155,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: painter_switch_b
+  heldItem: {fileID: 0}
   explosion: {fileID: 5544339517789404948}
   sparks: {fileID: 4988227543161012681}
   audioSource: {fileID: 6848077255719517244}
   disabledSound: {fileID: 8300000, guid: fce16df7d5ab91d4093c613227394f0b, type: 3}
-  heldItem: {fileID: 0}
   state: 0
+  buttonSound: {fileID: 8300000, guid: 57f15b9950d3a2e4b8b1815c0a130d44, type: 3}
   buttonObject: {fileID: 8552872175335261512}
   machine: {fileID: 7070454179017011550}
   buttonLocation: {x: 0, y: -0.06, z: 0.05}

@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75eb712b195d46a478f177dbe2b84dc1, type: 3}
+  m_Name: GameIntro
+  m_EditorClassIdentifier: 
+  contextItems:
+  - panel: {fileID: 21300000, guid: 551ddc9775cbc7847a7aeb7286e183aa, type: 3}
+    text: It's weird to think that society used to live above ground where things
+      like trees grew and animals prospered with humans.
+  - panel: {fileID: 0}
+    text: I never really knew what that was like since I was born into the Underground
+      Society.
+  - panel: {fileID: 21300000, guid: 2d81e6441f1fdb846857dfba31b118a0, type: 3}
+    text: The closest experience I've ever had with such luxury was through the books
+      and videos they gave us to study.
+  - panel: {fileID: 0}
+    text: Any reason to learn these things was only for the benefit of keeping track
+      of our previous history above ground - even if there's not much benefit for
+      knowing.
+  - panel: {fileID: 21300000, guid: 24b05db1266e0dc40b28019747b15f29, type: 3}
+    text: We can't even grow any plant life here or even raise animals. Any other
+      non-human being that required our oxygen was just seen as a waste of society's
+      space.
+  - panel: {fileID: 0}
+    text: Hence, only certain animals exist like cows. Yet, even they're a luxury
+      now. People like us just rely on rations while the big heads in the government
+      eat things like burgers.
+  - panel: {fileID: 21300000, guid: 38d409ac84a9ebf45be09f65969e08de, type: 3}
+    text: "Now that I'm 20, I\u2019ll be able to start working my way towards all
+      that luxury."
+  - panel: {fileID: 0}
+    text: I hope my aptitude test results put me somewhere good. I've studied hard
+      to get here, I don't plan to fail.

@@ -2,77 +2,94 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EvaluationManager : MonoBehaviour
+public class EvaluationManager : Manager
 {
-    [SerializeField] private SceneHandler sceneHandler;
-    
-    [Header("Elevator")]
-    [SerializeField] private GameObject elevator;
-    [Space(10)]
-    [SerializeField] private float passDistance;
-    [SerializeField] private float passDuration;
-    [Space(10)]
-    [SerializeField] private float failDistance;
-    [SerializeField] private float failDuration;
-
-    [Header("Light")]
-    [SerializeField] private Renderer lightMesh;
-    [SerializeField] private Light spotLight;
+    [SerializeField] private EvalElevator elevator;
 
     [Header("Screens")]
-    [SerializeField] private EvaluationScreen evalScreen;
-    [SerializeField] private ResultScreen resultScreen;
+    [SerializeField] private ScreenUI tv;
 
-    private void OnEnable()
+    [Header("Dialogue")]
+    [SerializeField] private DialogueGroup winGroup;
+    [SerializeField] private DialogueGroup loseGroup;
+
+    private SceneHandler sceneHandler;
+    private DialogueHandler dialogueHandler;
+    private bool passed;
+
+    protected override void OnAwake()
     {
-        DialogueHandler.OnIntroFinish += PlayEvaluationSequence;
+        sceneHandler = GetComponent<SceneHandler>();
+        dialogueHandler = GetComponent<DialogueHandler>();
+        base.OnAwake();
     }
 
-    private void OnDisable()
+    protected override void AddListeners()
     {
-        DialogueHandler.OnIntroFinish -= PlayEvaluationSequence;
+        DialogueHandler.OnDialogueGroupEnd += ReceiveGroup;
+        base.AddListeners();
     }
 
-    private void Start()
+    protected override void RemoveListeners()
     {
-        lightMesh.material = new Material(lightMesh.material);
+        DialogueHandler.OnDialogueGroupEnd -= ReceiveGroup;
+        base.RemoveListeners();
     }
 
-    private void PlayEvaluationSequence()
+    protected override void StartGame()
     {
-        StartCoroutine(CO_EvaluationSequence());
+        base.StartGame();
+        PlayerUI.instance.symptomsBar.DisableBar();
+        passed = DataManager.instance.EvaluateQuota();
+        StartCoroutine(CO_StartGame());
     }
 
-    private void ChangeLightColor(Color color)
+    protected override void EndGame()
     {
-        lightMesh.material.SetColor("_EmissionColor",color);
-        spotLight.color = color;
+        Player.instance.state = PlayerState.Disabled;
+        StartCoroutine(CO_EndGame());
+        base.EndGame();
     }
 
-    private IEnumerator CO_EvaluationSequence()
+    private void ReceiveGroup(int index)
     {
-        evalScreen.gameObject.SetActive(true);
-        evalScreen.PlayAnimation();
-        ChangeLightColor(Color.black);
+        if (index == 1) EndGame();
+    }
+
+    private IEnumerator CO_StartGame()
+    {
+        tv.PlayEvaluation();
         yield return new WaitForSeconds(4f);
+        dialogueHandler.dialogueGroups[1] = passed ? winGroup : loseGroup;
+        dialogueHandler.StartCurrentDialogueGroup();
+    }
 
-        bool passed = DataManager.instance.EvaluateQuota();
-        evalScreen.gameObject.SetActive(false);
-        resultScreen.gameObject.SetActive(true);
-        resultScreen.ShowResult(passed);
-        ChangeLightColor(passed ? Color.green : Color.red);
-        yield return new WaitForSeconds(2f);
-
+    private IEnumerator CO_EndGame()
+    {
+        elevator.MoveElevator(passed);
         DataManager.instance.AddRandomSymptom();
-        float elevDistance = passed ? passDistance : failDistance;
-        float elevDuration = passed ? passDuration : failDuration;
-        LeanTween.move(elevator, elevator.transform.position + Vector3.up * elevDistance, elevDuration);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(3f);
 
-        if(DataManager.instance.queuedScene == "BurnoutIntro")
+        LoadNextScene();
+    }
+
+    private void LoadNextScene()
+    {
+        if (!passed)
+        {
+            sceneHandler.LoadScene("BadEnding");
+            return;
+        }
+
+        if (DataManager.instance.queuedScene == "BurnoutIntro")
         {
             sceneHandler.LoadScene(DataManager.instance.queuedScene);
             DataManager.instance.queuedScene = "Tutorial 2";
+        }
+        else if (DataManager.instance.queuedScene == "GoodEnding")
+        {
+            sceneHandler.LoadScene(DataManager.instance.queuedScene);
+            DataManager.instance.queuedScene = "Title";
         }
         else
         {

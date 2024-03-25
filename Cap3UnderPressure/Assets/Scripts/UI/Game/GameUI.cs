@@ -45,23 +45,25 @@ public class GameUI : MonoBehaviour
     }
 
     #region Update Methods
-    private void UpdateColorRequirement(RobotColor color)
+    public void UpdateColorRequirement(RobotColor color)
     {
         string[] colorText = {
             "<color=#ffffff>White</color>",
-            "<color=#aa3232>Red</color>",
-            "<color=#32aa32>Green</color>",
-            "<color=#3232aa>Blue</color>"
+            "<color=#db4242>Red</color>",
+            "<color=#42db42>Green</color>",
+            "<color=#4242db>Blue</color>"
         };
+
+        if (color == RobotColor.White) return;
         requirement.text = "Required Color:\n" + colorText[(int)color];
     }
 
-    private void UpdateScore(int points, int quota)
+    public void UpdateScore(int points, int quota)
     {
         score.text = "Bots Delivered:\n" + points.ToString("00") + "/" + quota.ToString("00");
     }
 
-    private void UpdateTimer(int seconds)
+    public void UpdateTimer(int seconds)
     {
         int minutes = seconds / 60;
         int sec = seconds % 60;

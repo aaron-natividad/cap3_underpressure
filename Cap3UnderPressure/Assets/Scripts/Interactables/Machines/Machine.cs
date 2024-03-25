@@ -7,6 +7,8 @@ public abstract class Machine : Interactable
 {
     public static Action<Machine> OnMachineInteracted;
 
+    public Item heldItem;
+
     [Header("Particles")]
     [SerializeField] protected ParticleSystem explosion;
     [SerializeField] protected ParticleSystem sparks;
@@ -15,7 +17,6 @@ public abstract class Machine : Interactable
     [SerializeField] protected AudioSource audioSource;
     [SerializeField] protected AudioClip disabledSound;
 
-    [HideInInspector] public Item heldItem;
     [HideInInspector] public MachineState state;
 
     protected float animSpeed = 1f;
