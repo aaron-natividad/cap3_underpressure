@@ -9069,6 +9069,12 @@ MonoBehaviour:
       textSound: {fileID: 8300000, guid: 6ea4b21b4076ac94a8289c1b53ede94d, type: 3}
       dialogueText: If you lose or misplace any items, remember to look for a <color=#db4242>Recovery
         Station</color>.
+    - focusPoint: {fileID: 0}
+      lookTime: 0
+      speakerName: 
+      textSound: {fileID: 8300000, guid: 6ea4b21b4076ac94a8289c1b53ede94d, type: 3}
+      dialogueText: Press <color=#db4242>Right Click</color> to drop the item you're
+        holding.
   - requirementType: 1
     requiredItem: robot
     requiredMachine: 

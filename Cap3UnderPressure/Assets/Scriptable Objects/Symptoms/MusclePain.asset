@@ -15,7 +15,7 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 44ab32f2f98adde46a814bee2ab8cbfa, type: 3}
   clip: {fileID: 32900000, guid: 53ad65c77c59aa14a838149f67df5a71, type: 3}
   id: Muscle Pain
-  description: Your increased stress lead to psychosomatic symptoms. You find it
+  description: Your increased stress leads to psychosomatic symptoms. You find it
     difficult to exert any extra physical force.
   effect: Disable running when holding an item.
   ui: {fileID: 0}
