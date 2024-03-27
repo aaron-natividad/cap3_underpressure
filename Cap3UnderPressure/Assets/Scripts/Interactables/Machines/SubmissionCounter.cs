@@ -75,7 +75,7 @@ public class SubmissionCounter : Machine
         }
 
         ClearItem();
-        state = MachineState.Normal;
+        state = storedState;
     }
 
     private void PlayEffect(bool isCorrect)

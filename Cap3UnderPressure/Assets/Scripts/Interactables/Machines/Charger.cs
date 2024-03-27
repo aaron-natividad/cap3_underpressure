@@ -23,22 +23,31 @@ public class Charger : Machine
 
         if (player.heldItem != null)
         {
-            if (!player.heldItem.GetComponent<RobotBattery>()) return;
+            RobotBattery battery = player.heldItem.GetComponent<RobotBattery>();
+            if (battery == null) return;
+            
+            battery.OnFullCharge += DisableChargeSound;
+            ToggleChargeSound(!battery.IsFullyCharged());
+
             TakeItem(player, attachPoint);
-            PlayChargeSound(true);
             OnMachineInteracted?.Invoke(this);
         }
         else if (heldItem != null)
         {
+            heldItem.GetComponent<RobotBattery>().OnFullCharge -= DisableChargeSound;
+            ToggleChargeSound(false);
             GiveItem(player, ref heldItem);
-            PlayChargeSound(false);
             OnMachineInteracted?.Invoke(this);
         }
     }
 
-    private void PlayChargeSound(bool isPlaying)
+    private void DisableChargeSound()
     {
-        
+        ToggleChargeSound(false);
+    }
+
+    private void ToggleChargeSound(bool isPlaying)
+    {
         audioSource.clip = chargeSound;
         audioSource.loop = isPlaying;
         if (isPlaying)

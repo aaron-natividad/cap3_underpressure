@@ -477,6 +477,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 105078886}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &105078888 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7149961688509964356, guid: f712880ed681ddc459556dc66784f66b,
+    type: 3}
+  m_PrefabInstance: {fileID: 105078886}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c5cbb7846deb914ba3e3f7b625ed4ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &141591491
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2529,6 +2541,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 447810938}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &447810940 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 244376262956406793, guid: 1fb65e48ab9dc5043bfcc53a802e5867,
+    type: 3}
+  m_PrefabInstance: {fileID: 447810938}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42a9f51f3be2a6246b23cf91cbc8f59b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &454007710
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3858,6 +3882,30 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 749353065}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &749353067 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7356840575846006792, guid: afb466ede5736e542a871b1b658ef4b6,
+    type: 3}
+  m_PrefabInstance: {fileID: 749353065}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6683d2b7c2668e145861211d9fd3cb08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &749353068 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4927521072650095695, guid: afb466ede5736e542a871b1b658ef4b6,
+    type: 3}
+  m_PrefabInstance: {fileID: 749353065}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1731e4cc4fb812346ae60c8e60930e8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &749452920
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4328,6 +4376,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 854351183}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &854351185 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7149961688509964356, guid: 24f1e2147a608e44e9057342c0b840d7,
+    type: 3}
+  m_PrefabInstance: {fileID: 854351183}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c5cbb7846deb914ba3e3f7b625ed4ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &901834638
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4719,54 +4779,54 @@ MonoBehaviour:
     - focusPoint: {fileID: 0}
       lookTime: 0
       speakerName: Manager
-      textSound: {fileID: 8300000, guid: 8838ff1b29c81c64e9eef6620d6e7e0f, type: 3}
+      speakerType: 1
       dialogueText: Welcome to the rest of your life.
     - focusPoint: {fileID: 1183398258}
       lookTime: 1
       speakerName: Manager
-      textSound: {fileID: 8300000, guid: 8838ff1b29c81c64e9eef6620d6e7e0f, type: 3}
+      speakerType: 1
       dialogueText: I'm up here on the camera, newbie.
     - focusPoint: {fileID: 0}
       lookTime: 0
       speakerName: Manager
-      textSound: {fileID: 8300000, guid: 8838ff1b29c81c64e9eef6620d6e7e0f, type: 3}
+      speakerType: 1
       dialogueText: I'm too busy managing this company, so I'll be talking to you
         through this camera.
     - focusPoint: {fileID: 0}
       lookTime: 0
       speakerName: Manager
-      textSound: {fileID: 8300000, guid: 8838ff1b29c81c64e9eef6620d6e7e0f, type: 3}
+      speakerType: 1
       dialogueText: Over the next few days, I'll be teaching you the basics on operating
         the machines in the facility.
     - focusPoint: {fileID: 0}
       lookTime: 0
       speakerName: Manager
-      textSound: {fileID: 8300000, guid: 8838ff1b29c81c64e9eef6620d6e7e0f, type: 3}
+      speakerType: 1
       dialogueText: Since today's your first day, I'm instructed to give you only
         the <color=#db4242>Dispensers</color> and the <color=#db4242>Assembler</color>.
         Start moving.
     - focusPoint: {fileID: 1942880313}
       lookTime: 1
       speakerName: Manager
-      textSound: {fileID: 8300000, guid: 8838ff1b29c81c64e9eef6620d6e7e0f, type: 3}
+      speakerType: 1
       dialogueText: <color=#db4242>Dispensers</color> you'll find like the ones in
         front of you will give you what you need to manufacture parts of the bot.
     - focusPoint: {fileID: 0}
       lookTime: 0
       speakerName: Manager
-      textSound: {fileID: 8300000, guid: 8838ff1b29c81c64e9eef6620d6e7e0f, type: 3}
+      speakerType: 1
       dialogueText: For now, these <color=#db4242>Dispensers</color> already give
         the manufactured products. You'll just assemble them.
     - focusPoint: {fileID: 0}
       lookTime: 0
       speakerName: Manager
-      textSound: {fileID: 8300000, guid: 8838ff1b29c81c64e9eef6620d6e7e0f, type: 3}
+      speakerType: 1
       dialogueText: The first <color=#db4242>Dispenser</color> will give you the
         <color=#db4242>Wheels</color> of the bot.
     - focusPoint: {fileID: 0}
       lookTime: 0
       speakerName: 
-      textSound: {fileID: 8300000, guid: 6ea4b21b4076ac94a8289c1b53ede94d, type: 3}
+      speakerType: 0
       dialogueText: Interact with the <color=#db4242>Dispenser</color> to obtain
         the <color=#db4242>Wheels</color>.
   - requirementType: 2
@@ -4776,7 +4836,7 @@ MonoBehaviour:
     - focusPoint: {fileID: 578855679}
       lookTime: 1
       speakerName: 
-      textSound: {fileID: 8300000, guid: 6ea4b21b4076ac94a8289c1b53ede94d, type: 3}
+      speakerType: 0
       dialogueText: Interact with the <color=#db4242>Wheels</color> to pick it up.
   - requirementType: 1
     requiredItem: wheels
@@ -4785,13 +4845,13 @@ MonoBehaviour:
     - focusPoint: {fileID: 437001557}
       lookTime: 1
       speakerName: Manager
-      textSound: {fileID: 8300000, guid: 8838ff1b29c81c64e9eef6620d6e7e0f, type: 3}
+      speakerType: 1
       dialogueText: The red machine over there is the <color=#db4242>Assembler</color>,
         the holy grail at the end of manufacturing processes.
     - focusPoint: {fileID: 0}
       lookTime: 0
       speakerName: 
-      textSound: {fileID: 8300000, guid: 6ea4b21b4076ac94a8289c1b53ede94d, type: 3}
+      speakerType: 0
       dialogueText: Interact with the <color=#db4242>Assembler</color> to prepare
         the robot's parts.
   - requirementType: 2
@@ -4801,7 +4861,7 @@ MonoBehaviour:
     - focusPoint: {fileID: 1340059860}
       lookTime: 1
       speakerName: 
-      textSound: {fileID: 8300000, guid: 6ea4b21b4076ac94a8289c1b53ede94d, type: 3}
+      speakerType: 0
       dialogueText: Press the button to place each part accordingly.
   - requirementType: 2
     requiredItem: 
@@ -4810,16 +4870,24 @@ MonoBehaviour:
     - focusPoint: {fileID: 1629379376}
       lookTime: 2
       speakerName: Manager
-      textSound: {fileID: 8300000, guid: 8838ff1b29c81c64e9eef6620d6e7e0f, type: 3}
+      speakerType: 1
       dialogueText: Activate the second <color=#db4242>Dispenser</color> to obtain
         a <color=#db4242>Battery</color>. For now, these <color=#db4242>Batteries</color>
         will be charged.
     - focusPoint: {fileID: 0}
       lookTime: 0
       speakerName: Manager
-      textSound: {fileID: 8300000, guid: 8838ff1b29c81c64e9eef6620d6e7e0f, type: 3}
+      speakerType: 1
       dialogueText: Get one and put it together with the <color=#db4242>Wheels</color>
         on the <color=#db4242>Assembler</color>.
+  - requirementType: 2
+    requiredItem: 
+    requiredMachine: dispenser_switch_battery_uncharged
+    dialogueItems: []
+  - requirementType: 1
+    requiredItem: battery
+    requiredMachine: 
+    dialogueItems: []
   - requirementType: 2
     requiredItem: battery
     requiredMachine: assembler
@@ -4827,7 +4895,7 @@ MonoBehaviour:
     - focusPoint: {fileID: 1340059860}
       lookTime: 1
       speakerName: 
-      textSound: {fileID: 8300000, guid: 6ea4b21b4076ac94a8289c1b53ede94d, type: 3}
+      speakerType: 0
       dialogueText: Press the button to place the part.
   - requirementType: 2
     requiredItem: 
@@ -4836,9 +4904,17 @@ MonoBehaviour:
     - focusPoint: {fileID: 379673208}
       lookTime: 2
       speakerName: Manager
-      textSound: {fileID: 8300000, guid: 8838ff1b29c81c64e9eef6620d6e7e0f, type: 3}
+      speakerType: 1
       dialogueText: The last <color=#db4242>Dispenser</color> will give you the bot's
         <color=#db4242>Shell</color>. Put that with the others in the <color=#db4242>Assembler</color>.
+  - requirementType: 2
+    requiredItem: 
+    requiredMachine: dispenser_switch_shell
+    dialogueItems: []
+  - requirementType: 1
+    requiredItem: shell
+    requiredMachine: 
+    dialogueItems: []
   - requirementType: 2
     requiredItem: shell
     requiredMachine: assembler
@@ -4846,7 +4922,7 @@ MonoBehaviour:
     - focusPoint: {fileID: 1340059860}
       lookTime: 1
       speakerName: 
-      textSound: {fileID: 8300000, guid: 6ea4b21b4076ac94a8289c1b53ede94d, type: 3}
+      speakerType: 0
       dialogueText: Press the button to place the part.
   - requirementType: 2
     requiredItem: 
@@ -4855,7 +4931,7 @@ MonoBehaviour:
     - focusPoint: {fileID: 1364129180}
       lookTime: 1
       speakerName: 
-      textSound: {fileID: 8300000, guid: 6ea4b21b4076ac94a8289c1b53ede94d, type: 3}
+      speakerType: 0
       dialogueText: Interact to pick up the complete robot.
   - requirementType: 1
     requiredItem: robot
@@ -4864,7 +4940,7 @@ MonoBehaviour:
     - focusPoint: {fileID: 281878384}
       lookTime: 1
       speakerName: Manager
-      textSound: {fileID: 8300000, guid: 8838ff1b29c81c64e9eef6620d6e7e0f, type: 3}
+      speakerType: 1
       dialogueText: Once the assembly is finished, submit that to the <color=#db4242>Conveyor</color>
         over there.
   - requirementType: 2
@@ -4874,13 +4950,13 @@ MonoBehaviour:
     - focusPoint: {fileID: 1183398258}
       lookTime: 1
       speakerName: Manager
-      textSound: {fileID: 8300000, guid: 8838ff1b29c81c64e9eef6620d6e7e0f, type: 3}
+      speakerType: 1
       dialogueText: That's all you'll be getting from me today, it should be easy,
         right?
     - focusPoint: {fileID: 0}
       lookTime: 0
       speakerName: Manager
-      textSound: {fileID: 8300000, guid: 8838ff1b29c81c64e9eef6620d6e7e0f, type: 3}
+      speakerType: 1
       dialogueText: Now, GET TO WORK, we'll be watching your every move. So don't
         make me look bad.
 --- !u!114 &1098911673
@@ -8327,6 +8403,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1274277527}
+  - component: {fileID: 1274277528}
   m_Layer: 0
   m_Name: Machines
   m_TagString: Untagged
@@ -8354,6 +8431,59 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1274277528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1274277526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2693fffa08e62b848a40e142bb453a99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  machinesMaster:
+  - {fileID: 105078888}
+  - {fileID: 854351185}
+  - {fileID: 1721853496}
+  - {fileID: 447810940}
+  - {fileID: 749353068}
+  - {fileID: 749353067}
+  sequence:
+  - groupIndex: 0
+    enabledMachines:
+    - {fileID: 105078888}
+  - groupIndex: 2
+    enabledMachines:
+    - {fileID: 749353068}
+  - groupIndex: 3
+    enabledMachines:
+    - {fileID: 749353067}
+  - groupIndex: 4
+    enabledMachines:
+    - {fileID: 854351185}
+  - groupIndex: 6
+    enabledMachines:
+    - {fileID: 749353068}
+  - groupIndex: 7
+    enabledMachines:
+    - {fileID: 749353067}
+  - groupIndex: 8
+    enabledMachines:
+    - {fileID: 1721853496}
+  - groupIndex: 10
+    enabledMachines:
+    - {fileID: 749353068}
+  - groupIndex: 11
+    enabledMachines:
+    - {fileID: 749353067}
+  - groupIndex: 12
+    enabledMachines:
+    - {fileID: 749353068}
+  - groupIndex: 13
+    enabledMachines:
+    - {fileID: 447810940}
 --- !u!1 &1282651995
 GameObject:
   m_ObjectHideFlags: 0
@@ -13712,6 +13842,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1721853494}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1721853496 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7149961688509964356, guid: cd0c8077cbdf4b7499cbb9394ca4250e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1721853494}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c5cbb7846deb914ba3e3f7b625ed4ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1730162881
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15093,6 +15235,11 @@ PrefabInstance:
       propertyPath: blurVolume
       value: 
       objectReference: {fileID: 1293272691}
+    - target: {fileID: 5537283474570062419, guid: 84dd1c3fa7a7f394fae9737ea5d1f798,
+        type: 3}
+      propertyPath: canSkipTutorial
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6091352889617754063, guid: 84dd1c3fa7a7f394fae9737ea5d1f798,
         type: 3}
       propertyPath: m_AnchorMax.x

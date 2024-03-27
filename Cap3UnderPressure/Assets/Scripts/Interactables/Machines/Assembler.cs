@@ -87,11 +87,11 @@ public class Assembler : Machine
         LeanTween.moveLocal(topPart, topPartPos - new Vector3(0, topDistance, 0), 0.2f * animSpeed);
         yield return new WaitForSeconds(0.2f * animSpeed);
         AttachRobotPart();
-        
+
         LeanTween.moveLocal(topPart, topPartPos, 0.5f * animSpeed).setEase(LeanTweenType.easeOutCubic);
         yield return new WaitForSeconds(0.5f * animSpeed);
 
-        state = MachineState.Normal;
+        state = storedState;
     }
 
     private void SpawnRoomba()

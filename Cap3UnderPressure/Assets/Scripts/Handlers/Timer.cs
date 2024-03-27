@@ -22,6 +22,20 @@ public class Timer : MonoBehaviour
         if (timerSeconds > 0) StartCoroutine(RunTimer());
     }
 
+    public void ForceChangeTimer(int time)
+    {
+        internalTimerSeconds = time;
+        OnTimerSecondsChanged?.Invoke(internalTimerSeconds);
+        SendTimerData();
+    }
+
+    public void ForceResetTimer()
+    {
+        internalTimerSeconds = timerSeconds;
+        OnTimerSecondsChanged?.Invoke(internalTimerSeconds);
+        SendTimerData();
+    }
+
     private IEnumerator RunTimer()
     {
         OnTimerSecondsChanged?.Invoke(internalTimerSeconds);

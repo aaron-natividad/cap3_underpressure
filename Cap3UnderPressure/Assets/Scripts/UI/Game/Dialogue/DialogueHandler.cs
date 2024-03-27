@@ -5,9 +5,10 @@ using UnityEngine;
 
 public class DialogueHandler : MonoBehaviour
 {
-    public static Action OnIntroFinish;
-    public static Action<int> OnDialogueGroupEnd;
+    public static Action OnDialogueStart;
     public static Action OnDialogueEnd;
+    public static Action<int> OnDialogueGroupStart;
+    public static Action<int> OnDialogueGroupEnd;
 
     public DialogueGroup[] dialogueGroups;
 
@@ -41,6 +42,14 @@ public class DialogueHandler : MonoBehaviour
         groupIndex = 0;
     }
 
+    private void StartDialogue()
+    {
+        if (dialogueGroups[0].requirementType == DialogueRequirementType.Intro)
+            StartDialogueGroup(0);
+        else
+            OnDialogueStart?.Invoke();
+    }
+
     public void StartCurrentDialogueGroup()
     {
         StartDialogueGroup(groupIndex);
@@ -48,20 +57,19 @@ public class DialogueHandler : MonoBehaviour
 
     public void StartDialogueGroup(int groupIndex)
     {
+        OnDialogueGroupStart?.Invoke(groupIndex);
+
+        if (dialogueGroups[groupIndex].dialogueItems.Length <= 0)
+        {
+            EndDialogueGroup();
+            return;
+        }
+
         player.state = PlayerState.Dialogue;
         inDialogueGroup = true;
         this.groupIndex = groupIndex;
         itemIndex = 0;
         SendDialogueText(this.groupIndex, 0);
-    }
-
-    #region Private Methods
-    private void StartDialogue()
-    {
-        if (dialogueGroups[0].requirementType == DialogueRequirementType.Intro)
-            StartDialogueGroup(0);
-        else
-            OnIntroFinish?.Invoke();
     }
 
     private void ContinueDialogue()
@@ -72,8 +80,6 @@ public class DialogueHandler : MonoBehaviour
         if (itemIndex >= dialogueGroups[groupIndex].dialogueItems.Length)
         {
             EndDialogueGroup();
-            groupIndex++;
-            if (groupIndex >= dialogueGroups.Length) OnDialogueEnd?.Invoke();
             return;
         }
 
@@ -87,20 +93,21 @@ public class DialogueHandler : MonoBehaviour
         ui.SetEnabled(false);
         OnDialogueGroupEnd?.Invoke(groupIndex);
 
-        if (dialogueGroups[0].requirementType == DialogueRequirementType.Intro)
-            OnIntroFinish?.Invoke();
+        if (dialogueGroups[0].requirementType == DialogueRequirementType.Intro && groupIndex == 0)
+            OnDialogueStart?.Invoke();
+
+        groupIndex++;
+        if (groupIndex >= dialogueGroups.Length) 
+            OnDialogueEnd?.Invoke();
     }
 
     private void SendDialogueText(int gIndex, int iIndex)
     {
         DialogueItem currentItem = dialogueGroups[gIndex].dialogueItems[iIndex];
-
-        if (currentItem.focusPoint != null) player.fpsCam.LookAt(currentItem.focusPoint.position, currentItem.lookTime);
-
-        ui.SetEnabled(true);
-        ui.UpdateText(currentItem.speakerName, currentItem.dialogueText, currentItem.textSound);
+        if (currentItem.focusPoint != null) 
+            player.fpsCam.LookAt(currentItem.focusPoint.position, currentItem.lookTime);
+        ui.UpdateText(currentItem);
     }
-    #endregion
 
     #region Evaluations
     private void EvaluateInteraction(Machine machine)

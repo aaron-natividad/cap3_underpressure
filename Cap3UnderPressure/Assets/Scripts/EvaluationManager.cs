@@ -24,6 +24,13 @@ public class EvaluationManager : Manager
         base.OnAwake();
     }
 
+    protected override void OnStart()
+    {
+        base.OnStart();
+        EvaluateScene();
+        PlayerUI.instance.symptomsBar.DisableBar();
+    }
+
     protected override void AddListeners()
     {
         DialogueHandler.OnDialogueGroupEnd += ReceiveGroup;
@@ -39,8 +46,6 @@ public class EvaluationManager : Manager
     protected override void StartGame()
     {
         base.StartGame();
-        PlayerUI.instance.symptomsBar.DisableBar();
-        passed = DataManager.instance.EvaluateQuota();
         StartCoroutine(CO_StartGame());
     }
 
@@ -73,27 +78,31 @@ public class EvaluationManager : Manager
         LoadNextScene();
     }
 
-    private void LoadNextScene()
+    private void EvaluateScene()
     {
+        passed = DataManager.instance.EvaluateQuota();
+
         if (!passed)
         {
-            sceneHandler.LoadScene("BadEnding");
+            DataManager.instance.queuedScene = "Title";
+            sceneHandler.nextScene = "BadEnding";
             return;
         }
 
         if (DataManager.instance.queuedScene == "BurnoutIntro")
         {
-            sceneHandler.LoadScene(DataManager.instance.queuedScene);
+            sceneHandler.nextScene = "BurnoutIntro";
             DataManager.instance.queuedScene = "Tutorial 2";
         }
         else if (DataManager.instance.queuedScene == "GoodEnding")
         {
-            sceneHandler.LoadScene(DataManager.instance.queuedScene);
+            sceneHandler.nextScene = "GoodEnding";
             DataManager.instance.queuedScene = "Title";
         }
-        else
-        {
-            sceneHandler.LoadNextScene();
-        }
+    }
+
+    private void LoadNextScene()
+    {
+        sceneHandler.LoadNextScene();
     }
 }

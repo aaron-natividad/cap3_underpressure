@@ -11,3 +11,5 @@ public enum PlayerState { Normal, Disabled, Dialogue };
 public enum MachineState { Normal, Disabled, Performing };
 
 public enum DialogueRequirementType { None, Item, Machine, Intro};
+
+public enum SpeakerType { Text, Person };

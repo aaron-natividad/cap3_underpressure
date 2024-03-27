@@ -21,7 +21,7 @@ public class SwitchBase : Machine
 
     public override void Interact(Player pc)
     {
-        if (machine.state != MachineState.Normal) return;
+        if (machine.state == MachineState.Performing || state != MachineState.Normal) return;
         if (TryDisable()) return;
         StartCoroutine(DoSwitchAction());
         OnMachineInteracted?.Invoke(this);
@@ -29,14 +29,17 @@ public class SwitchBase : Machine
 
     protected virtual IEnumerator DoSwitchAction()
     {
+        state = MachineState.Performing;
         if (switchHandle != null) LeanTween.rotateLocal(switchHandle, switchRotation, 0.05f);
-        yield return new WaitForSeconds(0.1f);
         machine.StartCoroutine(machine.PerformAction());
+
+        yield return new WaitForSeconds(0.1f);
         if (switchHandle != null) LeanTween.rotateLocal(switchHandle, originalSwitchRotation, 0.5f);
+        state = storedState;
     }
 
     protected override void DisableConnectedMachines()
     {
-        machine.StartCoroutine(machine.DisableMachine(false, false));
+        machine.StartCoroutine(machine.CO_DisableAnimation(false, false));
     }
 }

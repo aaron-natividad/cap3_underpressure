@@ -3,37 +3,32 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class DialogueUI : MonoBehaviour
 {
+    [Header("Audio")]
+    [SerializeField] private AudioClip textSFX;
+    [SerializeField] private AudioClip personSFX;
+
+    [Header("Components")]
     [SerializeField] private TextMeshProUGUI speakerName;
     [SerializeField] private Image speakerBox;
     [SerializeField] private TextMeshProUGUI dialogue;
-    [SerializeField] private float dialogueDelay;
-    [SerializeField] private float dialogueSoundDelay;
+
+    [Header("Parameters")]
+    [SerializeField] private float dialogueDuration;
 
     [HideInInspector] public bool inAnimation;
 
     private CanvasGroup mainGroup;
     private AudioSource audioSource;
-    private AudioClip storedClip;
     private bool isEnabled;
-
-    private void OnEnable()
-    {
-        GenAnim.OnAnimationStateChanged += ChangeAnimationState;
-    }
-
-    private void OnDisable()
-    {
-        GenAnim.OnAnimationStateChanged -= ChangeAnimationState;
-    }
 
     private void Awake()
     {
         mainGroup = GetComponent<CanvasGroup>();
         audioSource = GetComponent<AudioSource>();
-        StartCoroutine(PlayDialogueSound());
     }
 
     public void SetEnabled(bool isEnabled)
@@ -47,29 +42,47 @@ public class DialogueUI : MonoBehaviour
         return isEnabled;
     }
 
-    public void UpdateText(string name, string text, AudioClip clip = null)
+    public void UpdateText(DialogueItem item)
     {
-        speakerName.text = name;
+        SetEnabled(true);
+        speakerName.text = item.speakerName;
         speakerBox.enabled = !(speakerName.text == "" || speakerName.text == null);
-        storedClip = clip;
-        StartCoroutine(GenAnim.PlayTextByLetter(dialogue, text, dialogueDelay));
+        dialogue.text = item.dialogueText;
+        PlaySound(item.speakerType);
+        StartCoroutine(CO_TextFade(item.lookTime));
     }
 
-    private void ChangeAnimationState(bool animState)
+    private void PlaySound(SpeakerType type)
     {
-        inAnimation = animState;
+        if (type == SpeakerType.Text)
+            StartCoroutine(CO_TextSFX());
+        else if (type == SpeakerType.Person)
+            StartCoroutine(CO_PersonSFX(0.13f, Random.Range(3,5)));
     }
 
-    private IEnumerator PlayDialogueSound()
+    private IEnumerator CO_TextSFX()
     {
-        while (true)
+        audioSource.pitch = Random.Range(0.8f, 1.2f);
+        audioSource.PlayOneShot(textSFX);
+        yield return null;
+    }
+
+    private IEnumerator CO_PersonSFX(float delay, int count)
+    {
+        for (int i = 0; i < count; i++)
         {
-            if (inAnimation && storedClip != null)
-            {
-                audioSource.pitch = Random.Range(0.8f, 1.2f);
-                audioSource.PlayOneShot(storedClip);
-            }
-            yield return new WaitForSeconds(dialogueSoundDelay);
+            audioSource.pitch = Random.Range(0.8f, 1.2f);
+            audioSource.PlayOneShot(personSFX);
+            yield return new WaitForSeconds(delay + Random.Range(0,0.03f));
         }
+    }
+
+    private IEnumerator CO_TextFade(float lookTime)
+    {
+        inAnimation = true;
+        dialogue.alpha = 0f;
+        StartCoroutine(GenAnim.Fade(dialogue, 1, 0.25f));
+        yield return new WaitForSeconds(Mathf.Max(lookTime, dialogueDuration));
+        inAnimation = false;
     }
 }

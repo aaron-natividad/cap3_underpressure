@@ -14,12 +14,12 @@ public class AudioSlider : MonoBehaviour
         volumeSlider.value = volumeValue;
     }
 
-    public void ChangeVolume()
+    public void ChangeValue()
     {
         AudioManager.instance?.ChangeVolume(volumeName, volumeSlider.value);
     }
 
-    public void ResetVolume()
+    public void ResetValue()
     {
         AudioManager.instance?.ChangeVolume(volumeName, 0);
         volumeSlider.value = 0;

@@ -4226,7 +4226,6 @@ GameObject:
   - component: {fileID: 1098911670}
   - component: {fileID: 1098911674}
   - component: {fileID: 1098911673}
-  - component: {fileID: 1098911675}
   - component: {fileID: 1098911672}
   m_Layer: 0
   m_Name: Manager
@@ -4270,20 +4269,20 @@ MonoBehaviour:
     - focusPoint: {fileID: 1183398258}
       lookTime: 1
       speakerName: Manager
-      textSound: {fileID: 8300000, guid: 8838ff1b29c81c64e9eef6620d6e7e0f, type: 3}
+      speakerType: 1
       dialogueText: I never knew the scrawny kid out of all people would survive
         until Day 5. You know I had a bet that you'd be gone by Day 4. THAT COST
         ME MONEY.
     - focusPoint: {fileID: 0}
       lookTime: 0
       speakerName: Manager
-      textSound: {fileID: 8300000, guid: 8838ff1b29c81c64e9eef6620d6e7e0f, type: 3}
+      speakerType: 1
       dialogueText: Because of that, you're going to be working extra hard today
         for not only wasting my money but also my time in telling you this.
     - focusPoint: {fileID: 0}
       lookTime: 0
       speakerName: Manager
-      textSound: {fileID: 8300000, guid: 8838ff1b29c81c64e9eef6620d6e7e0f, type: 3}
+      speakerType: 1
       dialogueText: GET TO WORK.
 --- !u!114 &1098911673
 MonoBehaviour:
@@ -4309,18 +4308,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbbb3f8530ac1fc409e64346216bd2e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1098911675
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1098911669}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5457ac4004fa02446b4fc959f93ff9a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1137508723
@@ -14605,6 +14592,11 @@ PrefabInstance:
       propertyPath: blurVolume
       value: 
       objectReference: {fileID: 1293272691}
+    - target: {fileID: 5537283474570062419, guid: 84dd1c3fa7a7f394fae9737ea5d1f798,
+        type: 3}
+      propertyPath: canSkipTutorial
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6091352889617754063, guid: 84dd1c3fa7a7f394fae9737ea5d1f798,
         type: 3}
       propertyPath: m_AnchorMax.x

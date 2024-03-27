@@ -14,6 +14,11 @@ public abstract class Interactable : MonoBehaviour
         Initialize();
     }
 
+    private void Start()
+    {
+        OnStart();
+    }
+
     public void Highlight(bool isHighlighted)
     {
         if (outline == null) return;
@@ -27,5 +32,10 @@ public abstract class Interactable : MonoBehaviour
     {
         outline = GetComponent<Outline>();
         if (outline != null) outline.enabled = false;
+    }
+
+    protected virtual void OnStart()
+    {
+
     }
 }

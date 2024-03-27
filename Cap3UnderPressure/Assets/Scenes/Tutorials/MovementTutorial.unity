@@ -17346,6 +17346,51 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 772184350}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &800435250
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 800435251}
+  - component: {fileID: 800435252}
+  m_Layer: 0
+  m_Name: DoorHitbox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &800435251
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 800435250}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 2.75, z: 2.7500005}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5002331350551633564}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &800435252
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 800435250}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5, y: 5, z: 0.5}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &805132159
 GameObject:
   m_ObjectHideFlags: 0
@@ -18465,45 +18510,45 @@ MonoBehaviour:
     - focusPoint: {fileID: 0}
       lookTime: 0
       speakerName: Officer
-      textSound: {fileID: 8300000, guid: 8838ff1b29c81c64e9eef6620d6e7e0f, type: 3}
+      speakerType: 1
       dialogueText: Next.
     - focusPoint: {fileID: 1163976277}
       lookTime: 1
       speakerName: Officer
-      textSound: {fileID: 8300000, guid: 8838ff1b29c81c64e9eef6620d6e7e0f, type: 3}
+      speakerType: 1
       dialogueText: Let's see here. Based on your results...
     - focusPoint: {fileID: 0}
       lookTime: 0
       speakerName: Officer
-      textSound: {fileID: 8300000, guid: 8838ff1b29c81c64e9eef6620d6e7e0f, type: 3}
+      speakerType: 1
       dialogueText: You'll be assigned to the factory.
     - focusPoint: {fileID: 0}
       lookTime: 0
       speakerName: Officer
-      textSound: {fileID: 8300000, guid: 8838ff1b29c81c64e9eef6620d6e7e0f, type: 3}
+      speakerType: 1
       dialogueText: Your job is to manufacture and assemble scouting bots.
     - focusPoint: {fileID: 0}
       lookTime: 0
       speakerName: Officer
-      textSound: {fileID: 8300000, guid: 8838ff1b29c81c64e9eef6620d6e7e0f, type: 3}
+      speakerType: 1
       dialogueText: If you're not aware, these scouting bots are what help expand
         the underground society and are also what help keep us alive.
     - focusPoint: {fileID: 0}
       lookTime: 0
       speakerName: Officer
-      textSound: {fileID: 8300000, guid: 8838ff1b29c81c64e9eef6620d6e7e0f, type: 3}
+      speakerType: 1
       dialogueText: The manager will fill you in on more useless details that you
         want to know about.
     - focusPoint: {fileID: 1351931965}
       lookTime: 1
       speakerName: Officer
-      textSound: {fileID: 8300000, guid: 8838ff1b29c81c64e9eef6620d6e7e0f, type: 3}
+      speakerType: 1
       dialogueText: Head over to the elevator on your right. It should lead you to
         the facility where you'll be working.
     - focusPoint: {fileID: 1163976277}
       lookTime: 1
       speakerName: Officer
-      textSound: {fileID: 8300000, guid: 8838ff1b29c81c64e9eef6620d6e7e0f, type: 3}
+      speakerType: 1
       dialogueText: Now get going, I've had enough of you wasting my time here.
   - requirementType: 0
     requiredItem: 
@@ -18512,7 +18557,7 @@ MonoBehaviour:
     - focusPoint: {fileID: 0}
       lookTime: 0
       speakerName: 
-      textSound: {fileID: 0}
+      speakerType: 0
       dialogueText: 
 --- !u!114 &1098911673
 MonoBehaviour:
@@ -21245,6 +21290,36 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2291522167743537272, guid: 84dd1c3fa7a7f394fae9737ea5d1f798,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2291522167743537272, guid: 84dd1c3fa7a7f394fae9737ea5d1f798,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2291522167743537272, guid: 84dd1c3fa7a7f394fae9737ea5d1f798,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2323058642190521258, guid: 84dd1c3fa7a7f394fae9737ea5d1f798,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2323058642190521258, guid: 84dd1c3fa7a7f394fae9737ea5d1f798,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2323058642190521258, guid: 84dd1c3fa7a7f394fae9737ea5d1f798,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2621771028227091080, guid: 84dd1c3fa7a7f394fae9737ea5d1f798,
         type: 3}
       propertyPath: m_Name
@@ -21360,6 +21435,31 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 362184863}
+    - target: {fileID: 2871225927523943725, guid: 84dd1c3fa7a7f394fae9737ea5d1f798,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2871225927523943725, guid: 84dd1c3fa7a7f394fae9737ea5d1f798,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4708729304736936525, guid: 84dd1c3fa7a7f394fae9737ea5d1f798,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4708729304736936525, guid: 84dd1c3fa7a7f394fae9737ea5d1f798,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4708729304736936525, guid: 84dd1c3fa7a7f394fae9737ea5d1f798,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4793604298998230195, guid: 84dd1c3fa7a7f394fae9737ea5d1f798,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -21371,6 +21471,36 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4793604298998230195, guid: 84dd1c3fa7a7f394fae9737ea5d1f798,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5070818352129897464, guid: 84dd1c3fa7a7f394fae9737ea5d1f798,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5070818352129897464, guid: 84dd1c3fa7a7f394fae9737ea5d1f798,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5070818352129897464, guid: 84dd1c3fa7a7f394fae9737ea5d1f798,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5089757954126214936, guid: 84dd1c3fa7a7f394fae9737ea5d1f798,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5089757954126214936, guid: 84dd1c3fa7a7f394fae9737ea5d1f798,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5089757954126214936, guid: 84dd1c3fa7a7f394fae9737ea5d1f798,
         type: 3}
       propertyPath: m_AnchorMin.x
       value: 0
@@ -21380,6 +21510,11 @@ PrefabInstance:
       propertyPath: blurVolume
       value: 
       objectReference: {fileID: 805132160}
+    - target: {fileID: 5537283474570062419, guid: 84dd1c3fa7a7f394fae9737ea5d1f798,
+        type: 3}
+      propertyPath: canSkipTutorial
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6091352889617754063, guid: 84dd1c3fa7a7f394fae9737ea5d1f798,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -21440,6 +21575,26 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7653135915519546334, guid: 84dd1c3fa7a7f394fae9737ea5d1f798,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7653135915519546334, guid: 84dd1c3fa7a7f394fae9737ea5d1f798,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8056085148295581210, guid: 84dd1c3fa7a7f394fae9737ea5d1f798,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8056085148295581210, guid: 84dd1c3fa7a7f394fae9737ea5d1f798,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8385919905265437265, guid: 84dd1c3fa7a7f394fae9737ea5d1f798,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -21450,12 +21605,32 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8635368400412236039, guid: 84dd1c3fa7a7f394fae9737ea5d1f798,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8635368400412236039, guid: 84dd1c3fa7a7f394fae9737ea5d1f798,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8721963363896711203, guid: 84dd1c3fa7a7f394fae9737ea5d1f798,
         type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8721963363896711203, guid: 84dd1c3fa7a7f394fae9737ea5d1f798,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8765055004048544218, guid: 84dd1c3fa7a7f394fae9737ea5d1f798,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8765055004048544218, guid: 84dd1c3fa7a7f394fae9737ea5d1f798,
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -21737,6 +21912,7 @@ Transform:
   - {fileID: 2741841362969583576}
   - {fileID: 1351931965}
   - {fileID: 926158420}
+  - {fileID: 800435251}
   m_Father: {fileID: 1146694543}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
@@ -21827,14 +22003,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 
   heldItem: {fileID: 0}
+  state: 0
   explosion: {fileID: 0}
   sparks: {fileID: 0}
   audioSource: {fileID: 5629509913083266088}
   disabledSound: {fileID: 0}
-  state: 0
   doorSound: {fileID: 8300000, guid: e3e516670058ce2498f16aa86503ff97, type: 3}
   liftSound: {fileID: 8300000, guid: 2a6ff9899daf17a47b89bc867ebf2a59, type: 3}
   elevatorParent: {fileID: 5629509913083266086}
+  doorHitbox: {fileID: 800435252}
   door: {fileID: 2741841362969583576}
   sceneHandler: {fileID: 1098911673}
   liftDistance: 10
@@ -21949,7 +22126,6 @@ GameObject:
   - component: {fileID: 2741841362969583576}
   - component: {fileID: 3645519746820458774}
   - component: {fileID: 4117829558249651115}
-  - component: {fileID: 5974325616680479643}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -21957,19 +22133,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &5974325616680479643
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5974325616680479642}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 6.0000014, y: 3, z: 0.25000006}
-  m_Center: {x: 0, y: 5.625, z: 2.8750007}
 --- !u!23 &6023591925625713580
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -22453,11 +22616,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: elevator_button
   heldItem: {fileID: 0}
+  state: 0
   explosion: {fileID: 0}
   sparks: {fileID: 0}
   audioSource: {fileID: 8557933603637025419}
   disabledSound: {fileID: 0}
-  state: 0
   buttonSound: {fileID: 8300000, guid: 57f15b9950d3a2e4b8b1815c0a130d44, type: 3}
   buttonObject: {fileID: 2039381025773313547}
   machine: {fileID: 5629509913083266087}

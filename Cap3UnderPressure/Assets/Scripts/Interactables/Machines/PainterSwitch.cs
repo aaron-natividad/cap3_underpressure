@@ -14,6 +14,6 @@ public class PainterSwitch : ButtonBase
 
     protected override void DisableConnectedMachines()
     {
-        machine.StartCoroutine(machine.DisableMachine(false, true));
+        machine.StartCoroutine(machine.CO_DisableAnimation(false, true));
     }
 }

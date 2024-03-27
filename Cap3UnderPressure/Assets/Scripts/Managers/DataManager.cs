@@ -14,6 +14,9 @@ public class DataManager : MonoBehaviour
 
     [Header("Symptoms")]
     public int symptomLimit = 4;
+
+    public List<Symptom> symptomsMaster;
+
     public List<Symptom> availableSymptoms;
     public List<Symptom> currentSymptoms;
 
@@ -34,6 +37,8 @@ public class DataManager : MonoBehaviour
         else
             instance = this;
         DontDestroyOnLoad(gameObject);
+
+        availableSymptoms = new List<Symptom>(symptomsMaster);
     }
 
     public void AddSymptom(int index)
@@ -43,11 +48,27 @@ public class DataManager : MonoBehaviour
         availableSymptoms.RemoveAt(index);
     }
 
+    public void AddSymptom(Symptom symptom)
+    {
+        if (availableSymptoms.Contains(symptom))
+        {
+            int index = availableSymptoms.IndexOf(symptom);
+            AddSymptom(index);
+        }
+    }
+
     public void AddRandomSymptom()
     {
         if (availableSymptoms.Count <= 0 || currentSymptoms.Count >= symptomLimit) return;
         int index = Random.Range(0, availableSymptoms.Count);
         AddSymptom(index);
+    }
+
+    public void ResetSymptoms()
+    {
+        availableSymptoms.Clear();
+        currentSymptoms.Clear();
+        availableSymptoms = new List<Symptom>(symptomsMaster);
     }
 
     public void ReceiveScore(int score, int quota)

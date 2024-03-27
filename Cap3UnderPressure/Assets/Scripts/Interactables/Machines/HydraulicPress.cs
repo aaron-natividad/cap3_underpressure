@@ -64,7 +64,7 @@ public class HydraulicPress : Machine
         LeanTween.move(shutter, shutterLocation, 0.9f * animSpeed).setEase(LeanTweenType.easeOutCubic);
         LeanTween.move(pressObject, pressLocation, 0.9f * animSpeed).setEase(LeanTweenType.easeOutCubic);
         yield return new WaitForSeconds(0.9f * animSpeed);
-        state = MachineState.Normal;
+        state = storedState;
     }
 
     private void EvaluateItem()

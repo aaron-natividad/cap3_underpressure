@@ -39,7 +39,7 @@ public class PlayerInteract : MonoBehaviour
     {
         // Drop Controls
         if (controller.drop.WasPressedThisFrame() && player.heldItem != null)
-            player.heldItem.Drop(player);
+            DropItem();
 
         // Interact Controls
         UseValidInteractable();
@@ -50,6 +50,18 @@ public class PlayerInteract : MonoBehaviour
         // Continue to next text
         if (controller.interact.WasPressedThisFrame())
             OnDialogueContinue?.Invoke();
+    }
+
+    private void DropItem()
+    {
+        RaycastHit hit;
+        Item item = player.heldItem;
+        player.heldItem.Drop(player);
+
+        if (Physics.SphereCast(transform.position - transform.forward, 0.5f, transform.forward, out hit, 2f))
+        {
+            item.transform.position = new Vector3(transform.position.x, item.transform.position.y, transform.position.z);
+        }
     }
 
     private void GetLastInteractable()
@@ -89,5 +101,11 @@ public class PlayerInteract : MonoBehaviour
         {
             validInteractable.Interact(player);
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position - transform.forward, 0.5f);
     }
 }

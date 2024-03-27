@@ -48,6 +48,6 @@ public class Dispenser : Machine
         animator.StartCoroutine(animator.PlayAnimationOnce("close"));
         LeanTween.move(dispenserHead, dispenserLocation, 0.8f).setEase(LeanTweenType.easeOutCubic);
         yield return new WaitForSeconds(0.8f);
-        state = MachineState.Normal;
+        state = storedState;
     }
 }

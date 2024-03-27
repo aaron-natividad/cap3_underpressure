@@ -12,6 +12,9 @@ public class PauseUI : MonoBehaviour
     [SerializeField] private AudioClip clickSound;
     [SerializeField] private CanvasGroup[] pauseGroups;
 
+    [SerializeField] private GameObject skipTutorialButton;
+    [SerializeField] private bool canSkipTutorial;
+
     private AudioSource audioSource;
     private CanvasGroup mainGroup;
     private bool isEnabled;
@@ -20,6 +23,7 @@ public class PauseUI : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
         mainGroup = GetComponent<CanvasGroup>();
+        skipTutorialButton.SetActive(canSkipTutorial);
     }
 
     public void SetEnabled(bool isEnabled)
@@ -54,13 +58,11 @@ public class PauseUI : MonoBehaviour
         StartCoroutine(GenAnim.Fade(pauseGroups[index], 1, 0.25f));
     }
 
-    //CHANGE
     public void Unpause()
     {
         Manager.instance.TogglePause();
     }
 
-    //CHANGE
     public void LoadTitleScreen()
     {
         GameObject dataManager = DataManager.instance.gameObject;
@@ -71,6 +73,14 @@ public class PauseUI : MonoBehaviour
         Manager.instance.GetComponent<SceneHandler>().LoadScene("Title");
         DataManager.instance = null;
         Destroy(dataManager);
+    }
+
+    public void LoadNextScene()
+    {
+        Manager.instance.TogglePause();
+        Player.instance.state = PlayerState.Disabled;
+        Time.timeScale = 0;
+        Manager.instance.GetComponent<SceneHandler>().LoadNextScene();
     }
 
     private void DisableCanvasGroups()

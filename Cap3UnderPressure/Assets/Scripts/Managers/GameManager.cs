@@ -17,9 +17,13 @@ public class GameManager : Manager
         timer = GetComponent<Timer>();
     }
 
-    protected override void StartGame()
+    protected override void OnStart()
     {
         DataManager.instance.queuedScene = queuedScene;
+    }
+
+    protected override void StartGame()
+    {
         score?.Initialize();
         timer?.Initialize();
         base.StartGame();

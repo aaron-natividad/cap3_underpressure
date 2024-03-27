@@ -11,6 +11,7 @@ public class Elevator : Machine
     [SerializeField] private AudioClip liftSound;
     [Space(10)]
     [SerializeField] private GameObject elevatorParent;
+    [SerializeField] private Collider doorHitbox;
     [SerializeField] private Transform door;
     [SerializeField] private SceneHandler sceneHandler;
     [Space(10)]
@@ -19,6 +20,11 @@ public class Elevator : Machine
     [SerializeField] private float doorDistance;
     [SerializeField] private float doorDuration;
 
+    protected override void Initialize()
+    {
+        base.Initialize();
+        doorHitbox.enabled = false;
+    }
 
     public override void Interact(Player player)
     {
@@ -29,6 +35,7 @@ public class Elevator : Machine
     {
         state = MachineState.Performing;
         audioSource.PlayOneShot(doorSound);
+        doorHitbox.enabled = true;
         LeanTween.moveLocal(door.gameObject, door.localPosition + Vector3.down * doorDistance, doorDuration).setEase(LeanTweenType.easeInCubic);
         yield return new WaitForSeconds(doorDuration + 1f);
 
@@ -37,6 +44,6 @@ public class Elevator : Machine
         yield return new WaitForSeconds(2f);
 
         OnElevatorLift?.Invoke();
-        state = MachineState.Normal;
+        state = storedState;
     }
 }

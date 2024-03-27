@@ -2813,6 +2813,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 686058587}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &686058590 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7149961688509964356, guid: 65d86e42ec474544d89d40e60eae4245,
+    type: 3}
+  m_PrefabInstance: {fileID: 686058587}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c5cbb7846deb914ba3e3f7b625ed4ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &722533801
 GameObject:
   m_ObjectHideFlags: 0
@@ -3901,7 +3913,6 @@ GameObject:
   - component: {fileID: 1098911670}
   - component: {fileID: 1098911674}
   - component: {fileID: 1098911673}
-  - component: {fileID: 1098911675}
   - component: {fileID: 1098911672}
   m_Layer: 0
   m_Name: Manager
@@ -3945,39 +3956,43 @@ MonoBehaviour:
     - focusPoint: {fileID: 1183398258}
       lookTime: 1
       speakerName: Manager
-      textSound: {fileID: 8300000, guid: 8838ff1b29c81c64e9eef6620d6e7e0f, type: 3}
+      speakerType: 1
       dialogueText: I'm surprised you made it this far. Most newbies end up losing
         it on Day 2. So congratulations, you're not that useless at all.
     - focusPoint: {fileID: 0}
       lookTime: 0
       speakerName: Manager
-      textSound: {fileID: 8300000, guid: 8838ff1b29c81c64e9eef6620d6e7e0f, type: 3}
+      speakerType: 1
       dialogueText: Question. What's the use of a robot if it doesn't have a <color=#db4242>Battery</color>?
     - focusPoint: {fileID: 0}
       lookTime: 0
       speakerName: Manager
-      textSound: {fileID: 8300000, guid: 8838ff1b29c81c64e9eef6620d6e7e0f, type: 3}
+      speakerType: 1
       dialogueText: Nothing, exactly. It's just like how a person is useless without
         a brain.
     - focusPoint: {fileID: 8674144812787178356}
       lookTime: 1
       speakerName: Manager
-      textSound: {fileID: 8300000, guid: 8838ff1b29c81c64e9eef6620d6e7e0f, type: 3}
+      speakerType: 1
       dialogueText: Today, I will be teaching you the last machine you'll be using
         when making the robot - the <color=#db4242>Charging Station</color>.
     - focusPoint: {fileID: 686058589}
       lookTime: 1
       speakerName: Manager
-      textSound: {fileID: 8300000, guid: 8838ff1b29c81c64e9eef6620d6e7e0f, type: 3}
+      speakerType: 1
       dialogueText: In these past few days, you've only been getting charged <color=#db4242>Batteries</color>
         from the <color=#db4242>Dispenser</color>. This time you'll be charging them
         on your own.
     - focusPoint: {fileID: 0}
       lookTime: 0
       speakerName: Manager
-      textSound: {fileID: 8300000, guid: 8838ff1b29c81c64e9eef6620d6e7e0f, type: 3}
+      speakerType: 1
       dialogueText: Pick up an uncharged <color=#db4242>Battery</color> from the
         <color=#db4242>Dispenser</color>.
+  - requirementType: 2
+    requiredItem: 
+    requiredMachine: dispenser_switch_battery_charged
+    dialogueItems: []
   - requirementType: 1
     requiredItem: battery
     requiredMachine: 
@@ -3985,7 +4000,7 @@ MonoBehaviour:
     - focusPoint: {fileID: 8674144812787178356}
       lookTime: 1
       speakerName: Manager
-      textSound: {fileID: 8300000, guid: 8838ff1b29c81c64e9eef6620d6e7e0f, type: 3}
+      speakerType: 1
       dialogueText: Place it over at the <color=#db4242>Charging Station</color>.
   - requirementType: 2
     requiredItem: battery
@@ -3994,18 +4009,18 @@ MonoBehaviour:
     - focusPoint: {fileID: 0}
       lookTime: 0
       speakerName: 
-      textSound: {fileID: 8300000, guid: 6ea4b21b4076ac94a8289c1b53ede94d, type: 3}
+      speakerType: 0
       dialogueText: It takes 5 seconds to fully charge a <color=#db4242>Battery</color>.
     - focusPoint: {fileID: 0}
       lookTime: 0
       speakerName: 
-      textSound: {fileID: 8300000, guid: 6ea4b21b4076ac94a8289c1b53ede94d, type: 3}
+      speakerType: 0
       dialogueText: The <color=#db4242>Battery</color> will glow when it's fully
         charged.
     - focusPoint: {fileID: 0}
       lookTime: 0
       speakerName: Manager
-      textSound: {fileID: 8300000, guid: 8838ff1b29c81c64e9eef6620d6e7e0f, type: 3}
+      speakerType: 1
       dialogueText: You can pick up the <color=#db4242>Battery</color> now.
   - requirementType: 1
     requiredItem: battery
@@ -4014,13 +4029,13 @@ MonoBehaviour:
     - focusPoint: {fileID: 1183398258}
       lookTime: 1
       speakerName: Manager
-      textSound: {fileID: 8300000, guid: 8838ff1b29c81c64e9eef6620d6e7e0f, type: 3}
+      speakerType: 1
       dialogueText: Now that you get it, you'll be submitting completed scouting
         bots based on the requirements given to you from today onwards.
     - focusPoint: {fileID: 0}
       lookTime: 0
       speakerName: Manager
-      textSound: {fileID: 8300000, guid: 8838ff1b29c81c64e9eef6620d6e7e0f, type: 3}
+      speakerType: 1
       dialogueText: Time is gold and money is gold. Therefore, time is money. SO
         GET WORKING, I have a few more meetings ahead.
 --- !u!114 &1098911673
@@ -4047,18 +4062,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbbb3f8530ac1fc409e64346216bd2e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1098911675
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1098911669}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5457ac4004fa02446b4fc959f93ff9a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1117246473
@@ -7848,6 +7851,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1274277527}
+  - component: {fileID: 1274277528}
   m_Layer: 0
   m_Name: Machines
   m_TagString: Untagged
@@ -7872,6 +7876,31 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1274277528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1274277526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2693fffa08e62b848a40e142bb453a99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  machinesMaster:
+  - {fileID: 686058590}
+  - {fileID: 1482020512396070202}
+  sequence:
+  - groupIndex: 0
+    enabledMachines:
+    - {fileID: 686058590}
+  - groupIndex: 2
+    enabledMachines:
+    - {fileID: 1482020512396070202}
+  - groupIndex: 3
+    enabledMachines:
+    - {fileID: 1482020512396070202}
 --- !u!1 &1282651995
 GameObject:
   m_ObjectHideFlags: 0
@@ -14601,11 +14630,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: charger
   heldItem: {fileID: 0}
+  state: 0
   explosion: {fileID: 0}
   sparks: {fileID: 0}
   audioSource: {fileID: 0}
   disabledSound: {fileID: 0}
-  state: 0
   chargeSound: {fileID: 0}
   chargeEffect: {fileID: 0}
   attachPoint: {fileID: 8674144812787178356}
@@ -14783,11 +14812,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: charger
   heldItem: {fileID: 0}
+  state: 0
   explosion: {fileID: 2403528692654528428}
   sparks: {fileID: 2214032394007254126}
   audioSource: {fileID: 3832427879097080237}
   disabledSound: {fileID: 8300000, guid: fce16df7d5ab91d4093c613227394f0b, type: 3}
-  state: 0
   chargeSound: {fileID: 8300000, guid: 09422c872f4cc1c419f22370545cc807, type: 3}
   chargeEffect: {fileID: 3696704821423561150}
   attachPoint: {fileID: 8674144812787178356}
@@ -24622,6 +24651,11 @@ PrefabInstance:
       propertyPath: blurVolume
       value: 
       objectReference: {fileID: 1293272691}
+    - target: {fileID: 5537283474570062419, guid: 84dd1c3fa7a7f394fae9737ea5d1f798,
+        type: 3}
+      propertyPath: canSkipTutorial
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6091352889617754063, guid: 84dd1c3fa7a7f394fae9737ea5d1f798,
         type: 3}
       propertyPath: m_AnchorMax.x

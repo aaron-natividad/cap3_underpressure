@@ -14,6 +14,7 @@ public class Manager : MonoBehaviour
     private bool isPaused;
     private PlayerState storedPlayerState;
 
+    #region Unity Messages
     private void OnEnable()
     {
         AddListeners();
@@ -27,10 +28,14 @@ public class Manager : MonoBehaviour
     private void Awake()
     {
         CreateSingleton();
-        DialogueHandler.OnIntroFinish += StartGame;
         isPaused = false;
         canPause = false;
         OnAwake();
+    }
+
+    private void Start()
+    {
+        OnStart();
     }
 
     private void Update()
@@ -40,6 +45,34 @@ public class Manager : MonoBehaviour
             TogglePause();
         }
     }
+    #endregion
+
+    #region Initializers
+    protected virtual void AddListeners()
+    {
+        Timer.OnTimerFinish += EndGame;
+        Elevator.OnElevatorLift += EndGame;
+        SceneHandler.OnSceneReady += EnablePause;
+        DialogueHandler.OnDialogueStart += StartGame;
+    }
+
+    protected virtual void RemoveListeners()
+    {
+        Timer.OnTimerFinish -= EndGame;
+        Elevator.OnElevatorLift -= EndGame;
+        SceneHandler.OnSceneReady -= EnablePause;
+        DialogueHandler.OnDialogueStart -= StartGame;
+    }
+    
+    protected virtual void OnAwake()
+    {
+
+    }
+
+    protected virtual void OnStart()
+    {
+
+    }
 
     protected void CreateSingleton()
     {
@@ -48,27 +81,11 @@ public class Manager : MonoBehaviour
         else
             instance = this;
     }
+    #endregion
 
-    protected virtual void OnAwake()
-    {
-
-    }
-
-    protected virtual void AddListeners()
-    {
-        Timer.OnTimerFinish += EndGame;
-        Elevator.OnElevatorLift += EndGame;
-    }
-
-    protected virtual void RemoveListeners()
-    {
-        Timer.OnTimerFinish -= EndGame;
-        Elevator.OnElevatorLift -= EndGame;
-    }
-
+    #region In-Game
     protected virtual void StartGame()
     {
-        DialogueHandler.OnIntroFinish -= StartGame;
         PlayerUI.instance.gameUI.SetEnabled(true);
         Player.instance.state = PlayerState.Normal;
         canPause = true;
@@ -79,6 +96,13 @@ public class Manager : MonoBehaviour
     {
         canPause = false;
         OnEndGame?.Invoke();
+    }
+    #endregion
+
+    #region Pause Methods
+    protected virtual void EnablePause()
+    {
+        canPause = true;
     }
 
     public virtual void TogglePause()
@@ -100,4 +124,5 @@ public class Manager : MonoBehaviour
             AudioManager.instance.Play();
         }
     }
+    #endregion
 }

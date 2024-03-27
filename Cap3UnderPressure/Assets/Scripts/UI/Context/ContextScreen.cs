@@ -14,68 +14,92 @@ public class ContextScreen : MonoBehaviour
     [SerializeField] private ContextInfo introGroup;
 
     [Header("Parameters")]
-    [SerializeField] private float introDelay;
-    [SerializeField] private float typewriterSoundDelay;
+    [SerializeField] private float textDelay;
+    [SerializeField] private float soundDelay;
 
     [Header("Audio")]
     [SerializeField] private AudioSource audioSource;
-    [SerializeField] private AudioClip typewriterSound;
+    [SerializeField] private AudioClip textSound;
     [SerializeField] private AudioClip clickSound;
 
     [Header("Components")]
     [SerializeField] private Image introPanel;
     [SerializeField] private TextMeshProUGUI introText;
-    [SerializeField] private TextMeshProUGUI lmbText;
-    [SerializeField] private GameObject introButton;
+    [SerializeField] private GameObject nextButton;
+    [SerializeField] private GameObject skipButton;
 
-    private bool inAnimation;
     private int itemIndex;
+    private Coroutine anim_CO;
 
     private void OnEnable()
     {
-        SceneHandler.OnSceneReady += InitializeIntro;
-        GenAnim.OnAnimationStateChanged += ChangeAnimationState;
+        SceneHandler.OnSceneReady += InitializeContext;
     }
 
     private void OnDisable()
     {
-        SceneHandler.OnSceneReady -= InitializeIntro;
-        GenAnim.OnAnimationStateChanged -= ChangeAnimationState;
+        SceneHandler.OnSceneReady -= InitializeContext;
     }
 
-    private void InitializeIntro()
+    private void InitializeContext()
     {
         itemIndex = 0;
-        StartCoroutine(PlayTypewriterSound());
-        PlayCurrentItem();
         Cursor.lockState = CursorLockMode.None;
+
+        nextButton.SetActive(true);
+        skipButton.SetActive(true);
+
+        StartCoroutine(PlaySound());
+        PlayCurrentItem();
+    }
+
+    public void Click()
+    {
+        audioSource.pitch = Random.Range(0.9f, 1.1f);
+        audioSource.PlayOneShot(clickSound);
+    }
+
+    public void EndContext()
+    {
+        StopAllCoroutines();
+        nextButton.SetActive(false);
+        skipButton.SetActive(false);
+
+        OnContextFinish?.Invoke();
+        sceneHandler.LoadNextScene();
     }
 
     public void MoveToNextItem()
     {
-        if (inAnimation) return;
-
+        if (SkipItem() || itemIndex >= introGroup.contextItems.Length) return;
         itemIndex++;
-        audioSource.pitch = Random.Range(0.9f, 1.1f);
-        audioSource.PlayOneShot(clickSound);
+
         if (itemIndex < introGroup.contextItems.Length)
-        {
             PlayCurrentItem();
-        }
         else
-        {
-            StopAllCoroutines();
-            introButton.SetActive(false);
-            OnContextFinish?.Invoke();
-            sceneHandler.LoadNextScene();
-        }
+            EndContext();
     }
 
     private void PlayCurrentItem()
     {
         if (introGroup.contextItems[itemIndex].panel != null)
             UpdatePanel(introGroup.contextItems[itemIndex].panel, 0.25f);
-        StartCoroutine(GenAnim.PlayTextByLetter(introText, introGroup.contextItems[itemIndex].text, introDelay));
+        anim_CO = StartCoroutine(PlayText(introText, introGroup.contextItems[itemIndex].text, textDelay));
+    }
+
+    private bool SkipItem()
+    {
+        if (anim_CO != null)
+        {
+            StopCoroutine(anim_CO);
+            anim_CO = null;
+            introText.text = introGroup.contextItems[itemIndex].text;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     private void UpdatePanel(Sprite currentPanel, float duration)
@@ -85,22 +109,44 @@ public class ContextScreen : MonoBehaviour
         StartCoroutine(GenAnim.Fade(introPanel, 1f, duration));
     }
 
-    private void ChangeAnimationState(bool animState)
-    {
-        inAnimation = animState;
-        lmbText.enabled = !inAnimation;
-    }
-
-    private IEnumerator PlayTypewriterSound()
+    private IEnumerator PlaySound()
     {
         while (true)
         {
-            if (inAnimation)
+            if (anim_CO != null)
             {
                 audioSource.pitch = Random.Range(1f, 1.4f);
-                audioSource.PlayOneShot(typewriterSound);
+                audioSource.PlayOneShot(textSound);
             }
-            yield return new WaitForSeconds(typewriterSoundDelay);
+            yield return new WaitForSeconds(soundDelay);
         }
+    }
+
+    private IEnumerator PlayText(TextMeshProUGUI tmp, string text, float delay)
+    {
+        bool inCommand = false;
+        string currentText = "";
+
+        for (int i = 0; i < text.Length; i++)
+        {
+            currentText += text[i];
+
+            if (text[i] == '<')
+            {
+                inCommand = true;
+                continue;
+            }
+            else if (text[i] == '>')
+            {
+                inCommand = false;
+                continue;
+            }
+            if (inCommand) continue;
+
+            tmp.text = currentText;
+            yield return new WaitForSeconds(delay);
+        }
+
+        anim_CO = null;
     }
 }

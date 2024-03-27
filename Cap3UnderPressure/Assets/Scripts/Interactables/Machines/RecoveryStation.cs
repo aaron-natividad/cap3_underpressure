@@ -16,6 +16,20 @@ public class RecoveryStation : Machine
         if (heldItem != null) heldItem.Attach(attachPoint);
     }
 
+    protected override void OnStart()
+    {
+        StartCoroutine(CO_DelayedAttach());
+    }
+
+    private IEnumerator CO_DelayedAttach()
+    {
+        yield return new WaitForSeconds(0.2f);
+        TakeItem(heldItem, attachPoint);
+        group.availableList.Remove(this);
+        group.occupiedList.Add(this);
+        arrow.SetActive(heldItem != null);
+    }
+
     public override void Interact(Player player)
     {
         if (state != MachineState.Normal) return;

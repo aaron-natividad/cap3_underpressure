@@ -25,7 +25,7 @@ public class SensitivitySlider : MonoBehaviour
         OnSensitivityChanged?.Invoke();
     }
 
-    public void ResetVolume()
+    public void ResetValue()
     {
         PlayerPrefs.SetFloat(keyName, 2f);
         OnSensitivityChanged?.Invoke();

@@ -6618,12 +6618,12 @@ MonoBehaviour:
     - focusPoint: {fileID: 0}
       lookTime: 0
       speakerName: Manager
-      textSound: {fileID: 8300000, guid: 8838ff1b29c81c64e9eef6620d6e7e0f, type: 3}
-      dialogueText: You have 240 seconds to complete 5 robots.
+      speakerType: 1
+      dialogueText: You have 270 seconds to complete 5 robots.
     - focusPoint: {fileID: 0}
       lookTime: 0
       speakerName: Manager
-      textSound: {fileID: 8300000, guid: 8838ff1b29c81c64e9eef6620d6e7e0f, type: 3}
+      speakerType: 1
       dialogueText: Get to work.
   - requirementType: 0
     requiredItem: 
@@ -6632,7 +6632,7 @@ MonoBehaviour:
     - focusPoint: {fileID: 0}
       lookTime: 0
       speakerName: Manager
-      textSound: {fileID: 8300000, guid: 8838ff1b29c81c64e9eef6620d6e7e0f, type: 3}
+      speakerType: 1
       dialogueText: Times up.
 --- !u!114 &1098911673
 MonoBehaviour:
@@ -6677,7 +6677,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3745b13f0e6aaf04b9c4a1b64f38f47f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timerSeconds: 240
+  timerSeconds: 270
 --- !u!114 &1098911676
 MonoBehaviour:
   m_ObjectHideFlags: 0

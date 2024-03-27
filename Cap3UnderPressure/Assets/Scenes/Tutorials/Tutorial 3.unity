@@ -3478,6 +3478,30 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 880426550}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &880426552 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 349061673170665776, guid: 2dad327283184524eaeffc67bed5b333,
+    type: 3}
+  m_PrefabInstance: {fileID: 880426550}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c5cbb7846deb914ba3e3f7b625ed4ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &880426553 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 823309620349602742, guid: 2dad327283184524eaeffc67bed5b333,
+    type: 3}
+  m_PrefabInstance: {fileID: 880426550}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f3726a43363d0840b357f4b189ae36e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &906921335
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4140,26 +4164,42 @@ MonoBehaviour:
     - focusPoint: {fileID: 1183398258}
       lookTime: 1
       speakerName: Manager
-      textSound: {fileID: 8300000, guid: 8838ff1b29c81c64e9eef6620d6e7e0f, type: 3}
+      speakerType: 1
       dialogueText: Hm... You don't seem to look well. Doesn't matter, as long as
         you can make me money, SO LISTEN.
     - focusPoint: {fileID: 0}
       lookTime: 0
       speakerName: Manager
-      textSound: {fileID: 8300000, guid: 8838ff1b29c81c64e9eef6620d6e7e0f, type: 3}
+      speakerType: 1
       dialogueText: "I\u2019ll be adding more machines for you to learn today with
         the addition of the <color=#db4242>Painter</color>."
     - focusPoint: {fileID: 0}
       lookTime: 0
       speakerName: Manager
-      textSound: {fileID: 8300000, guid: 8838ff1b29c81c64e9eef6620d6e7e0f, type: 3}
+      speakerType: 1
       dialogueText: You need to color the shell of the robot based on the requirements
         that are given to you.
     - focusPoint: {fileID: 1793390106}
       lookTime: 1
       speakerName: Manager
-      textSound: {fileID: 8300000, guid: 8838ff1b29c81c64e9eef6620d6e7e0f, type: 3}
+      speakerType: 1
       dialogueText: Pick up the <color=#db4242>Scrap</color> and turn it into a <color=#db4242>Shell</color>.
+  - requirementType: 2
+    requiredItem: 
+    requiredMachine: dispenser_switch_scrap
+    dialogueItems: []
+  - requirementType: 1
+    requiredItem: scrap
+    requiredMachine: 
+    dialogueItems: []
+  - requirementType: 2
+    requiredItem: scrap
+    requiredMachine: press
+    dialogueItems: []
+  - requirementType: 2
+    requiredItem: 
+    requiredMachine: press_switch
+    dialogueItems: []
   - requirementType: 1
     requiredItem: shell
     requiredMachine: 
@@ -4167,12 +4207,12 @@ MonoBehaviour:
     - focusPoint: {fileID: 0}
       lookTime: 0
       speakerName: 
-      textSound: {fileID: 8300000, guid: 6ea4b21b4076ac94a8289c1b53ede94d, type: 3}
+      speakerType: 0
       dialogueText: The required color needed can be seen under the timer.
     - focusPoint: {fileID: 1815397461}
       lookTime: 1
       speakerName: Manager
-      textSound: {fileID: 8300000, guid: 8838ff1b29c81c64e9eef6620d6e7e0f, type: 3}
+      speakerType: 1
       dialogueText: Stop dilly-dallying and put that into the <color=#db4242>Painter</color>,
         I don't have all day to babysit you.
   - requirementType: 2
@@ -4182,13 +4222,13 @@ MonoBehaviour:
     - focusPoint: {fileID: 1815397462}
       lookTime: 1
       speakerName: Manager
-      textSound: {fileID: 8300000, guid: 8838ff1b29c81c64e9eef6620d6e7e0f, type: 3}
+      speakerType: 1
       dialogueText: You'll notice three different button colors. Those represent
         the colors of the shell you'll be painting with.
     - focusPoint: {fileID: 0}
       lookTime: 0
       speakerName: 
-      textSound: {fileID: 8300000, guid: 6ea4b21b4076ac94a8289c1b53ede94d, type: 3}
+      speakerType: 0
       dialogueText: Press the red button to paint the <color=#db4242>Shell</color>
         red.
   - requirementType: 2
@@ -4198,12 +4238,12 @@ MonoBehaviour:
     - focusPoint: {fileID: 1815397461}
       lookTime: 1
       speakerName: Manager
-      textSound: {fileID: 8300000, guid: 8838ff1b29c81c64e9eef6620d6e7e0f, type: 3}
+      speakerType: 1
       dialogueText: You seem to be picking up well, surprisingly.
     - focusPoint: {fileID: 1183398258}
       lookTime: 1
       speakerName: Manager
-      textSound: {fileID: 8300000, guid: 8838ff1b29c81c64e9eef6620d6e7e0f, type: 3}
+      speakerType: 1
       dialogueText: Now assemble those parts together and MAKE ME MONEY.
 --- !u!114 &1098911673
 MonoBehaviour:
@@ -7866,6 +7906,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1274277527}
+  - component: {fileID: 1274277528}
   m_Layer: 0
   m_Name: Machines
   m_TagString: Untagged
@@ -7891,6 +7932,45 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1274277528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1274277526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2693fffa08e62b848a40e142bb453a99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  machinesMaster:
+  - {fileID: 1815397466}
+  - {fileID: 1815397465}
+  - {fileID: 1815397464}
+  - {fileID: 1815397463}
+  - {fileID: 880426553}
+  - {fileID: 880426552}
+  - {fileID: 1429314709}
+  sequence:
+  - groupIndex: 0
+    enabledMachines:
+    - {fileID: 1429314709}
+  - groupIndex: 2
+    enabledMachines:
+    - {fileID: 880426553}
+  - groupIndex: 3
+    enabledMachines:
+    - {fileID: 880426552}
+  - groupIndex: 4
+    enabledMachines:
+    - {fileID: 880426553}
+  - groupIndex: 5
+    enabledMachines:
+    - {fileID: 1815397466}
+  - groupIndex: 6
+    enabledMachines:
+    - {fileID: 1815397465}
 --- !u!1 &1282651995
 GameObject:
   m_ObjectHideFlags: 0
@@ -9168,6 +9248,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1429314707}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1429314709 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7149961688509964356, guid: d3820e477bbb7644f97bc2b51ef4dd1c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1429314707}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c5cbb7846deb914ba3e3f7b625ed4ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!43 &1443778275
 Mesh:
   m_ObjectHideFlags: 0
@@ -13942,6 +14034,54 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1815397459}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1815397463 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9141438531310214015, guid: 9316386cd14bbda4bab7fedc2b98d115,
+    type: 3}
+  m_PrefabInstance: {fileID: 1815397459}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a34d4cb9bee601c478aaf4ec56d68f3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1815397464 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6918940556218315979, guid: 9316386cd14bbda4bab7fedc2b98d115,
+    type: 3}
+  m_PrefabInstance: {fileID: 1815397459}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a34d4cb9bee601c478aaf4ec56d68f3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1815397465 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6940241398708151720, guid: 9316386cd14bbda4bab7fedc2b98d115,
+    type: 3}
+  m_PrefabInstance: {fileID: 1815397459}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a34d4cb9bee601c478aaf4ec56d68f3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1815397466 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7070454179017011550, guid: 9316386cd14bbda4bab7fedc2b98d115,
+    type: 3}
+  m_PrefabInstance: {fileID: 1815397459}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3747ab4c68fa15d42a52cd3dcfd4872c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1857171748
 GameObject:
   m_ObjectHideFlags: 0
@@ -14901,6 +15041,11 @@ PrefabInstance:
       propertyPath: blurVolume
       value: 
       objectReference: {fileID: 1293272691}
+    - target: {fileID: 5537283474570062419, guid: 84dd1c3fa7a7f394fae9737ea5d1f798,
+        type: 3}
+      propertyPath: canSkipTutorial
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6091352889617754063, guid: 84dd1c3fa7a7f394fae9737ea5d1f798,
         type: 3}
       propertyPath: m_AnchorMax.x

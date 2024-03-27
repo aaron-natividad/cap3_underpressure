@@ -10,7 +10,7 @@ public class SceneHandler : MonoBehaviour
     public static Action OnSceneLoading;
 
     [SerializeField] private Cover cover;
-    [SerializeField] private string nextScene;
+    public string nextScene;
 
     private void OnEnable()
     {

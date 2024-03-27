@@ -34,6 +34,18 @@ public class ScoreHandler : MonoBehaviour
         OnScoreChanged?.Invoke(score, quota);
     }
 
+    public void ForceChangeScore(int newScore)
+    {
+        score = newScore;
+        OnScoreChanged?.Invoke(score, quota);
+    }
+
+    public void ForceChangeScoreToQuota()
+    {
+        score = quota;
+        OnScoreChanged?.Invoke(score, quota);
+    }
+
     private void GetColorRequirement()
     {
         requiredColor = fixedColorRequirement ? fixedColor : (RobotColor)(Random.Range(0, 3) + 1);

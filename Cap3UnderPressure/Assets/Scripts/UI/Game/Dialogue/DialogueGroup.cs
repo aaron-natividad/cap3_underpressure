@@ -9,7 +9,7 @@ public class DialogueItem
     public float lookTime = 0.5f;
     [Space(10)]
     public string speakerName;
-    public AudioClip textSound;
+    public SpeakerType speakerType;
     [Multiline] public string dialogueText;
 }
 

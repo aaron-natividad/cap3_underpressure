@@ -54,11 +54,12 @@ MonoBehaviour:
   previousScore: 0
   previousQuota: 0
   symptomLimit: 4
-  availableSymptoms:
-  - {fileID: 11400000, guid: f8a3d673fae4fa749a7c5117b2bb545a, type: 2}
-  - {fileID: 11400000, guid: d7d10c360bc142f46981f7ba2293d25f, type: 2}
-  - {fileID: 11400000, guid: 863cf71077281a745b613f33c76bccf0, type: 2}
+  symptomsMaster:
   - {fileID: 11400000, guid: c5cc944e656890c42b075078556d90f9, type: 2}
+  - {fileID: 11400000, guid: d7d10c360bc142f46981f7ba2293d25f, type: 2}
+  - {fileID: 11400000, guid: f8a3d673fae4fa749a7c5117b2bb545a, type: 2}
+  - {fileID: 11400000, guid: 863cf71077281a745b613f33c76bccf0, type: 2}
+  availableSymptoms: []
   currentSymptoms: []
 --- !u!114 &2240880174893122461
 MonoBehaviour:

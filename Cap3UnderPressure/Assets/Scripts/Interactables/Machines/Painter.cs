@@ -87,7 +87,7 @@ public class Painter : Machine
         LeanTween.moveLocal(headH, headH.transform.localPosition - new Vector3(headHDistance, 0 ,0), 0.5f * animSpeed);
         LeanTween.moveLocal(movableCylinder, movableCylinder.transform.localPosition - new Vector3(0, movableCylinderDistance, 0), 0.5f * animSpeed);
         yield return new WaitForSeconds(0.5f * animSpeed);
-        state = MachineState.Normal;
+        state = storedState;
     }
 
     private void ChangePartColor()
@@ -103,7 +103,7 @@ public class Painter : Machine
     {
         foreach (PainterSwitch pb in painterButtons)
         {
-            pb.StartCoroutine(pb.DisableMachine(false, false));
+            pb.StartCoroutine(pb.CO_DisableAnimation(false, false));
         }
     }
 }

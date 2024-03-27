@@ -65,8 +65,11 @@ public class PlayerCamera : MonoBehaviour
 
     private void DoHeadBob()
     {
-        float currentBobSpeed = controller.dash.phase == InputActionPhase.Performed ? bobRunSpeed : bobWalkSpeed;
-        float currentBobMagnitude = controller.dash.phase == InputActionPhase.Performed ? bobRunMagnitude : bobWalkMagnitude;
+        bool dashPressed = controller.dash.phase == InputActionPhase.Performed; // Check dash button
+        if (!player.heldItemRunEnabled && player.heldItem != null) dashPressed = false;
+
+        float currentBobSpeed = dashPressed ? bobRunSpeed : bobWalkSpeed;
+        float currentBobMagnitude = dashPressed ? bobRunMagnitude : bobWalkMagnitude;
 
         if (controller.move.ReadValue<Vector2>() != Vector2.zero && player.grounded)
         {

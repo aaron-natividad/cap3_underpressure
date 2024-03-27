@@ -36,6 +36,8 @@ public class SymptomScreen : MonoBehaviour
 
     private void Start()
     {
+        if (DataManager.instance.currentSymptoms.Count <= 0)
+            SceneManager.LoadScene(DataManager.instance.queuedScene);
         StartCoroutine(Intro());
     }
 
